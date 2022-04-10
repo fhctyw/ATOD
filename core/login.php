@@ -6,10 +6,12 @@ $user = new User($_POST['email'], $_POST['password']);
 
 if (isset($_POST['do_login']))
 {
-    if (checkUser($dp, $user))
+    if (checkUser($db, $user)) {
         require '../index.html';
-    else
+    }
+    else {
         require '../view/error.html';
+    }
 }
 
 ?>

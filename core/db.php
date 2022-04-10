@@ -8,12 +8,18 @@ $db = new PDO($dsn, DB_NAME, DB_PSWD);
     
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-function checkUser($db, $user)
+function checkUser($db, $user) // email - adfsfsa@gmail.com, password = 5253asyhads
 {
-    $sql = 'SELECT email, password FROM users WHERE email = :email AND password = :password';
+    $sql = 'SELECT email, password FROM users'; //WHERE email = ' .$user->email.' AND password = '.$user->password;
+    
     $st = $db->prepare($sql);
-    var_dump($st); die;
-    $st->bindParam(':email', $user->email, PDO::PARAM_STR);
-    $st->bindParam(':password', $user->password, PDO::PARAM_STR);
-    $res = $db->execute();
+    $st->execute();
+
+    $result = $st->fetchAll();
+    
+    foreach ($result as $var) {
+        if ($var['email'] == $user->email && $var['password'] == $user->password)
+            return true;
+    }
+    return false;
 }
