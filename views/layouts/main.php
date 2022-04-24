@@ -5,6 +5,7 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
+use yii\helpers\Url;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
@@ -26,6 +27,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <header>
+    
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
@@ -37,11 +39,14 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Home', 'url' => ['/home/index']],
+            ['label' => 'Register', 'url' => ['/home/register']],
+            ['label' => 'Busket', 'url' => ['/home/busket']],
+            ['label' => 'Search', 'url' => ['/home/search']],
+            
+            
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Login', 'url' => ['/home/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
@@ -56,16 +61,23 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-</header>
-
-<main role="main" class="flex-shrink-0">
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+    </header>
+    
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
+    <div class="col-sm-3">
+            <div class="search_box pull-right">
+                <form method="get" action="<?= Url::to(['site/search'])?>">
+                <input type="text" placeholder="search" name="search">
+                </form>
+            </div>
+        </div>
 </main>
 
 <footer class="footer mt-auto py-3 text-muted">

@@ -3,14 +3,18 @@
 namespace app\controllers;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\Products;
+use \app\models\LoginForm;
+use \app\models\ContactForm;
+use \app\models\RegisterForm;
+use \app\models\BusketForm;
 
-class SiteController extends Controller
+class HomeController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -63,7 +67,38 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+   /** Register action
+    *
+    * @return Response|string
+    *
+    */
+    public function actionRegister()
+    {
+        
+        if( Yii::$app->request->isAjax ){
+            var_dump(Yii::$app->request->post() );
+            return 'test';
+        }
 
+        $model = new RegisterForm();
+      
+       // $model->save();
+
+       if(isset($_POST['RegisterForm']))
+       {
+        //var_dump($_POST['RegisterForm']);die();
+        $model->attributes = Yii::$app->request->post('RegisterForm');
+
+        if(  $model->register())
+        {
+            return $this->goHome();
+        }
+       }
+
+        $this->view->title = 'Регістрація';
+        return $this->render('register',compact('model'));
+    }
+    
     /**
      * Login action.
      *
@@ -99,30 +134,53 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
+     * Displays busket.
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionBusket()
     {
-        return $this->render('about');
+        $model = new BusketForm();
+
+        return $this->render('busket');
+    }
+    /**
+     * Displays search.
+     *
+     * @return string
+     */
+    public function actionSearch()
+    {
+        $search = Yii::$app->request->get('search');
+        $search1 = str_replace(' ', '', $search);
+        $query = Products::find()->where(['ProductName','replace(title," ", "")',$search1]);
+        //$this->setMeta('Пошук','name','Atod.ru');
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+
+        ]);
+        return $this->render('index',compact('dataProvider','search1')); 
+        //$query = Product::find()->where(['name',$search]);
+
+
+
     }
 }
+
+/**
+ * Displays contact page.
+ *
+ * @return Response|string
+ */
+/* public function actionContact()
+{
+    $model = new ContactForm();
+    if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        Yii::$app->session->setFlash('contactFormSubmitted');
+
+        return $this->refresh();
+    }
+    return $this->render('contact', [
+        'model' => $model,
+    ]);
+} */
