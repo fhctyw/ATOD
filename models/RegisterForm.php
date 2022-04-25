@@ -10,7 +10,6 @@ class RegisterForm extends Model
     public $name;
     public $email;
     public $password;
-    public $coins;
  
     public function rules()
     {
@@ -25,7 +24,7 @@ class RegisterForm extends Model
 
     public function register()
     {
-        $user = new users();
+        $user = new Users();
         $user->name = $this->name;
         $user->email = $this->email;
         $user->password = $this->password;

@@ -74,11 +74,6 @@ class HomeController extends Controller
     */
     public function actionRegister()
     {
-        
-        if( Yii::$app->request->isAjax ){
-            var_dump(Yii::$app->request->post() );
-            return 'test';
-        }
         $model = new RegisterForm();
        if(isset($_POST['RegisterForm']))
        {
@@ -91,7 +86,7 @@ class HomeController extends Controller
         $this->view->title = 'Регістрація';
         return $this->render('register',compact('model'));
     }
-    
+
     /**
      * Login action.
      *
@@ -147,14 +142,11 @@ class HomeController extends Controller
         $search = Yii::$app->request->get('search');
         $search1 = str_replace(' ', '', $search);
         $query = Products::find()->where(['ProductName','replace(title," ", "")',$search1]);
-        //$this->setMeta('Пошук','name','Atod.ru');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
 
         ]);
         return $this->render('index',compact('dataProvider','search1')); 
-        //$query = Product::find()->where(['name',$search]);
-
 
 
     }
