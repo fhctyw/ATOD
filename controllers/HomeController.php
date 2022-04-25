@@ -79,22 +79,15 @@ class HomeController extends Controller
             var_dump(Yii::$app->request->post() );
             return 'test';
         }
-
         $model = new RegisterForm();
-      
-       // $model->save();
-
        if(isset($_POST['RegisterForm']))
        {
-        //var_dump($_POST['RegisterForm']);die();
         $model->attributes = Yii::$app->request->post('RegisterForm');
-
         if(  $model->register())
         {
             return $this->goHome();
         }
        }
-
         $this->view->title = 'Регістрація';
         return $this->render('register',compact('model'));
     }
