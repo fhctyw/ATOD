@@ -62,7 +62,10 @@ class HomeController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //$products = Products::find()->where(['ProductName'=>'NVIDIA GeForce RTX 3050'])->one();
+        //$products = Products::find()->where(['Product_Id' => 20 ])->All();
+        $products = Products::find()->where(['<=','Product_Id' ,19 ])->All();
+        return $this->render('index',compact('products'));
     }
    /** Register action
     *
