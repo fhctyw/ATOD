@@ -36,6 +36,7 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
@@ -49,9 +50,9 @@ AppAsset::register($this);
                 ['label' => 'Login', 'url' => ['/home/login']]
             ) : (
                 '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
+                . Html::beginForm(['/home/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Logout (' . Yii::$app->user->identity->firstname . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -71,13 +72,6 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-    <div class="col-sm-3">
-            <div class="search_box pull-right">
-                <form method="get" action="<?= Url::to(['site/search'])?>">
-                <input type="text" placeholder="search" name="search">
-                </form>
-            </div>
-        </div>
 </main>
 
 <footer class="footer mt-auto py-3 text-muted">

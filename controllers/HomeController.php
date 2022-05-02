@@ -10,9 +10,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\Products;
 use \app\models\LoginForm;
-use \app\models\ContactForm;
 use \app\models\RegisterForm;
 use \app\models\BusketForm;
+use app\models\User;
 
 class HomeController extends Controller
 {
@@ -22,8 +22,9 @@ class HomeController extends Controller
     public function behaviors()
     {
         return [
+            
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -34,7 +35,7 @@ class HomeController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -50,10 +51,6 @@ class HomeController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -75,16 +72,18 @@ class HomeController extends Controller
     public function actionRegister()
     {
         $model = new RegisterForm();
-       if(isset($_POST['RegisterForm']))
-       {
-        $model->attributes = Yii::$app->request->post('RegisterForm');
-        if(  $model->register())
+        if ($model->load(Yii::$app->request->post()) && $model->register())
         {
             return $this->goHome();
         }
-       }
-        $this->view->title = 'Регістрація';
-        return $this->render('register',compact('model'));
+            
+        return $this->render('register', compact('model'));
+    }
+
+    public function actionTest()
+    {
+        
+        die;
     }
 
     /**
@@ -97,7 +96,6 @@ class HomeController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
@@ -147,7 +145,6 @@ class HomeController extends Controller
 
         ]);
         return $this->render('index',compact('dataProvider','search1')); 
-
 
     }
 }

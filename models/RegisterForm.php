@@ -10,25 +10,50 @@ class RegisterForm extends Model
     public $name;
     public $email;
     public $password;
- 
+
+    private $_user = false;
+
     public function rules()
     {
         return [
             [['name','email','password'],'required'],
-            ['email','email'],
-            ['name','unique','targetClass'=>'app\models\User'],
-            ['email','unique','targetClass'=>'app\models\User'],
-            ['password','string','min'=>3,'max'=>14]
+            [['name','email','password'], 'validateInputs'],
         ];
     }
 
     public function register()
     {
-        $user = new Users();
-        $user->name = $this->name;
-        $user->email = $this->email;
-        $user->password = $this->password;
-        return $user->save();
+        if ($this->validate())
+        {
+            $user = new User();
+            $user->_name = $this->name;
+            $user->_password = $this->password;
+            $comm = Yii::$app->db->createCommand('INSERT INTO users (firstname, Email, Coin, Password) VALUES(:name, :email, 0, :password)');
+            $comm->bindParam(':name', $user->_name);
+            $comm->bindParam(':email', $this->email);
+            $comm->bindParam(':password', $user->_password);
+            $comm->execute();
+            return Yii::$app->user->login($user, 3600*24*30);
+        }
+        return false;
     }
 
+    public function getUser()
+    {
+        if ($this->_user === false) {
+            $this->_user = User::findByUsername($this->name);
+        }
+        return $this->_user;
+    }
+
+    public function validateInputs($attribute)
+    {
+        if (!$this->hasErrors()) {
+            
+            $user = $this->getUser();
+            if ($user !== null) {
+                $this->addError($attribute, 'Incorrect inputs.');
+            }
+        }
+    }
 }
