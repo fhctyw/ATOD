@@ -26,7 +26,7 @@ $this->title = 'Atod';
                     <h2 class="product-brand">Epic Nuker v1.5</h2>
                     <p class="product-short-description">Ігровий комп’ютер</p>
                     <span class="price">37 134 грн</span>
-                </div>
+                </div> 
             </div>
             <div class="product-card">
                 <div class="product-image">
