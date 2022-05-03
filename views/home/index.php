@@ -136,8 +136,6 @@ $this->title = 'Atod';
             </div>
         </div>
     </section>
-    
-    <script src="SLscript.js"></script>
 
 </body>
 
