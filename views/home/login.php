@@ -13,7 +13,6 @@ use yii\bootstrap4\Html;
 <head>
     <meta charset="utf-8" />
     <title>Авторизація</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <form class="form" action="../core/login.php" method="POST">

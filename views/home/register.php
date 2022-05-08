@@ -2,7 +2,7 @@
 use yii\widgets\ActiveForm;
 use yii\bootstrap4\Html;
 ?>
-<h1>Регістрація </h1>
+<h1>Реєстрація </h1>
 <?php 
 //var_dump($model);
 ?>
@@ -12,6 +12,6 @@ use yii\bootstrap4\Html;
 <?= $form->field($model,'password')->passwordInput() ?>
 
 <div>
-   <button type="submit" class="btn btn-primary">Регістрація</button>
+   <button type="submit" class="btn btn-primary">Реєстрація</button>
 </div>
 <?php ActiveForm::end() ?>
