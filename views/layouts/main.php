@@ -21,7 +21,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <?php include('C:\OpenServer\domains\ATOD\views\home\header.php')?>
+    <?php //include('C:\OpenServer\domains\ATOD\views\home\header.php')?>
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
