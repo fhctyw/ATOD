@@ -16,6 +16,7 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
+
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,25 +25,26 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
+
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
-<header>
-<div class="inner_header">
-        <div class="logo_container">
-            <a href="/home/index"><button style="background-color: deepskyblue; border-radius: 10px; border-color: #1E79D7; height: 50px;">
-            <h1>A      T      O      D</h1></button></a>
-        </div>
-        <ul class="navigation">
-            <a href="/home/login"><button style="background-color: deepskyblue; border-radius: 10px; border-color: #1E79D7; height: 50px;">
-            <li>Увійти</button></li></a>
-            <a href="/home/register"><button style="background-color: deepskyblue; border-radius: 10px; border-color: #1E79D7; height: 50px;">
-            <li>Зареєструватися</button></li></a>
-            <a><i class="fas fa-shopping-basket"></i></a>
-            <a><i class="fa-solid fa-magnifying-glass"></i></a>
+<header class="header">
+        <ul class="menu_items">
+            <li class="logo">
+                <a href="index.php">ATOD</a>
+            </li>
+            <li>
+                <ul class="menu_items aside">
+                    <li><a class="link" href="/home/login">Увійти</a></li>
+                    <li><a class="link" href="/home/register">Зареєструватись</a></li>
+                    <!--<li class="aside_img"><a href="#"><img src="web\images\img\shopping-cart.png" width="40px"/></a></li>-->
+                    <a><i class="fas fa-shopping-basket"></i></a>
+                    <a><i class="fa-solid fa-magnifying-glass"></i></a>
+                </ul>
+            </li>
+            
         </ul>
-    </div>
-    </div>
 </header>
     
     <main role="main" class="flex-shrink-0">
