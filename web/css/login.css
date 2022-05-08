@@ -1,12 +1,12 @@
-body
+.site-login
 {
-    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3));
+    background: linear-gradient(rgba(202, 28, 28, 0.3),rgba(0,0,0,.3));
     -webkit-background-size: cover;
     background-size: cover;
     background-attachment: fixed;
     font-family: sans-serif;
 }
-.form 
+.site-login
 {
     position: absolute;
     top: 50%;
@@ -14,7 +14,7 @@ body
     transform: translate(-50%,-50%);
     background: rgba(0,0,0,.7);
 }
-.form h1
+.site-login h1
 {
     margin: 30px 100px;
     padding: 0;
@@ -22,7 +22,7 @@ body
     color: #fff;
     font-size: uppercase;
 }
-.input-form
+.username
 {
     margin: 15px 40px;
     text-align: center;
