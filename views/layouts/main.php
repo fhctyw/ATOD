@@ -30,7 +30,8 @@ AppAsset::register($this);
 <header>
 <div class="inner_header">
         <div class="logo_container">
-            <h1>A      T      O      D</h1>
+            <a href="/home/index"><button style="background-color: deepskyblue; border-radius: 10px; border-color: #1E79D7; height: 50px;">
+            <h1>A      T      O      D</h1></button></a>
         </div>
         <ul class="navigation">
             <a href="/home/login"><button style="background-color: deepskyblue; border-radius: 10px; border-color: #1E79D7; height: 50px;">
