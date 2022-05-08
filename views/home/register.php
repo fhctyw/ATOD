@@ -2,16 +2,31 @@
 use yii\widgets\ActiveForm;
 use yii\bootstrap4\Html;
 ?>
-<h1>Реєстрація </h1>
-<?php 
-//var_dump($model);
-?>
-<?php $form = ActiveForm::begin(['class'=>'form-horizontal']) ?>
-<?= $form->field($model,'name')->textInput() ?>
-<?= $form->field($model,'email')->textInput(['autofocus'=>true]) ?>
-<?= $form->field($model,'password')->passwordInput() ?>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Реєстрація</title>
+</head>
+<body>
+    <form class="form" action="../core/login.php" method="POST">
+        <h1>Реєстрація</h1>
+        <p>Створити профіль</p>
+        <div class="input-form">
+            <input type="text" name="name" placeholder="Ваше ім'я">
+        </div>
+        <div class="input-form">
+            <input type="text" name="email" placeholder="Введіть email">
+        </div>
+        <div class="input-form">
+            <input type="password" name="password" placeholder="Придумайте пароль">
+        </div>
+        <div class="input-form">
+            <input type="submit" name="do_login" value="Зареєструватися">
+        </div>
+        <div class="ifit">
+        <a href="#" class="ifit">Вже є профіль? Увійдіть</a>
+        </div>
+    </form>
 
-<div>
-   <button type="submit" class="btn btn-primary">Реєстрація</button>
-</div>
-<?php ActiveForm::end() ?>
+</body>
+</html>
