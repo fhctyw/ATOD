@@ -142,10 +142,10 @@ $this->title = 'Atod';
     <div class="body-content">
 
             <div class="col-lg-4">
-            <?php foreach ($products as $product)
+            <?php /*foreach ($products as $product)
                 {
                     echo $product->ProductName . '<br>';
-                }
+                }*/
                 ?>
              <?php  //var_dump($products); ?>
             </div>

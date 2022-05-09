@@ -33,7 +33,7 @@ AppAsset::register($this);
 <header class="header">
         <ul class="menu_items">
             <li class="logo">
-                <a href="index.php">ATOD</a>
+                <a href="index">ATOD</a>
             </li>
             <li>
                 <ul class="menu_items aside">
