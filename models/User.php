@@ -10,7 +10,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public $_name;
     public $_password;
     public $_authKey;
-    public $_accessToken;
+    //public $_accessToken;
 
     public static function tableName()
     {
@@ -45,7 +45,19 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         if ($user) {
             $user->_id = $user->id;
             $user->_name = $user->name;
-            $user->_password = $user->Password;
+            $user->_password = $user->password;
+            return $user;
+        } 
+        return null;
+    }
+
+    public static function findById($id)
+    {
+        $user = static::find()->where(['id'=>$id])->one();
+        if ($user) {
+            $user->_id = $user->id;
+            $user->_name = $user->name;
+            $user->_password = $user->password;
             return $user;
         } 
         return null;

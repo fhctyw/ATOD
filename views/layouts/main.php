@@ -18,55 +18,39 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
+
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/bd99522e1f.js" crossorigin="anonymous"></script>
 
     <?php $this->registerCsrfMetaTags() ?>
+    <script src="https://kit.fontawesome.com/70fe4785f4.js" crossorigin="anonymous"></script>
     <title><?= Html::encode($this->title) ?></title>
+
     <?php $this->head() ?>
 </head>
+
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
-<header>
-    
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-        ],
-    ]);
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/home/index']],
-            ['label' => 'Register', 'url' => ['/home/register']],
-            ['label' => 'Busket', 'url' => ['/home/busket']],
-            ['label' => 'Search', 'url' => ['/home/search']],
+<header class="header">
+        <ul class="menu_items">
+            <li class="logo">
+                <a href="index">ATOD</a>
+            </li>
+            <li>
+                <ul class="menu_items aside">
+                    <li><a class="link" href="/home/login">Увійти</a></li>
+                    <li><a class="link" href="/home/register">Зареєструватись</a></li>
+                    <!--<li class="aside_img"><a href="#"><img src="web\images\img\shopping-cart.png" width="40px"/></a></li>-->
+                    <a><i class="fas fa-shopping-basket"></i></a>
+                    <a><i class="fa-solid fa-magnifying-glass"></i></a>
+                </ul>
+            </li>
             
-            
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/home/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/home/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->firstname . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-    </header>
+        </ul>
+</header>
     
     <main role="main" class="flex-shrink-0">
         <div class="container">
@@ -89,7 +73,6 @@ AppAsset::register($this);
 ]);
 \yii\bootstrap4\Modal::end();
 ?>
-
 
 <?php $this->endBody() ?>
 </body>
