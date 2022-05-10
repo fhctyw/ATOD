@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/busket.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

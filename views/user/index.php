@@ -1,7 +1,9 @@
 <?php
 ?>
 <h1> DataBse content </h1>
-<?php var_dump($users,$products,$feedback); 
-
+<?php 
+foreach ((array) $users as $user) {
+    echo $user->id. '<br>';
+}
 
 ?>
