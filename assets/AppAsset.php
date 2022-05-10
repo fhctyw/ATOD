@@ -28,7 +28,8 @@ class AppAsset extends AssetBundle
         
     ];
     public $js = [
-        'JavaScript/SLscript.js',
+        'js/busket.js',
+        'js/SLscript.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
