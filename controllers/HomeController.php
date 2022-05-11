@@ -83,10 +83,13 @@ class HomeController extends Controller
         return $this->render('register', compact('model'));
     }
 
+
+
+
     public function actionTest()
     {
         
-        die;
+        return $this->render('test');
     }
 
     /**
@@ -140,16 +143,21 @@ class HomeController extends Controller
      */
     public function actionSearch()
     {
-        $search = Yii::$app->request->get('search');
+        /*$search = Yii::$app->request->get('search');
         $search1 = str_replace(' ', '', $search);
         $query = Products::find()->where(['ProductName','replace(title," ", "")',$search1]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
 
         ]);
-        return $this->render('index',compact('dataProvider','search1')); 
-
+        return $this->render('index',compact('dataProvider','search1'));
+        */
+        return $this->render('search');
+        
     }
+
+
+
 }
 
 /**
