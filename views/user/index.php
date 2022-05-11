@@ -1,5 +1,9 @@
 <?php
 ?>
-<h1> DataBase content </h1>
-<?php  var_dump($users); 
+<h1> DataBse content </h1>
+<?php 
+foreach ((array) $users as $user) {
+    echo $user->id. '<br>';
+}
+
 ?>

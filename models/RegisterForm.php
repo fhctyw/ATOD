@@ -28,7 +28,7 @@ class RegisterForm extends Model
             $user = new User();
             $user->_name = $this->name;
             $user->_password = $this->password;
-            $comm = Yii::$app->db->createCommand('INSERT INTO users (firstname, Email, Coin, Password) VALUES(:name, :email, 0, :password)');
+            $comm = Yii::$app->db->createCommand('INSERT INTO users (name, email, Password) VALUES(:name, :email, :password)');
             $comm->bindParam(':name', $user->_name);
             $comm->bindParam(':email', $this->email);
             $comm->bindParam(':password', $user->_password);

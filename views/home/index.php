@@ -1,5 +1,5 @@
 <?php
-
+use yii\widgets\LinkPager;
 /** @var yii\web\View $this */
 
 $this->title = 'Atod';
@@ -142,11 +142,16 @@ $this->title = 'Atod';
     <div class="body-content">
 
             <div class="col-lg-4">
-            <?php /*foreach ($products as $product)
-                {
-                    echo $product->ProductName . '<br>';
-                }*/
-                ?>
+            <?php 
+                  foreach ((array) $products as $product) {
+                      echo $product->product_name . '<br>';
+                    } 
+
+                    ?>
+                <a href="<?= \yii\helpers\Url::to(['/busket/add', 'id'=>
+                $product->product_id])?>" data-id="<?= $product->product_id?>"  class="btn btn-default add-to-busket">У кошик</a>
+                    <a class ="btn btn-default add-to-busket "href="/busket/add?id=2">Добавити у кошик</a>
+                    
              <?php  //var_dump($products); ?>
             </div>
         </div>
