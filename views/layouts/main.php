@@ -22,7 +22,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->registerCsrfMetaTags() ?>
     <script src="https://kit.fontawesome.com/70fe4785f4.js" crossorigin="anonymous"></script>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode("Atod") ?></title>
 
     <?php $this->head() ?>
 </head>
@@ -33,7 +33,7 @@ AppAsset::register($this);
 <header class="header">
         <ul class="menu_items">
             <li class="logo">
-                <a href="index.php">ATOD</a>
+                <a href=<?= Url::to(['/home/index']) ?>>ATOD</a>
             </li>
             <li>
                 <ul class="menu_items aside">

@@ -10,7 +10,7 @@ class UserController extends Controller {
     
     public function actionIndex() {
 
-        $users = User::findbyId('8');
+        $users = User::findbyId('1');
         //$products = Products::find()->all();
         //$feedback = Feedbacks::find()->all();
         //var_dump($users);
