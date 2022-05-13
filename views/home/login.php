@@ -15,7 +15,7 @@ use yii\bootstrap4\Html;
     <title>Авторизація</title>
 </head>
 <body>
-    <form class="form" action="../core/login.php" method="POST">
+    <form class="form" action="login.php" method="POST">
         <h1>Увійти</h1>
         <div class="input-form">
             <input type="text" name="email" placeholder="Пошта користувача">
