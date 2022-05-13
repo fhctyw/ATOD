@@ -4,12 +4,14 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
+use app\assets\JsAsset;
 use app\widgets\Alert;
 use yii\helpers\Url;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+//use yii\bootstrap4\Modal;
 
 AppAsset::register($this);
 ?>
@@ -20,8 +22,10 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
+    <script src="https://kit.fontawesome.com/bd99522e1f.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/70fe4785f4.js" crossorigin="anonymous"></script>
+
+    <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode("Atod") ?></title>
 
     <?php $this->head() ?>
@@ -50,15 +54,27 @@ AppAsset::register($this);
     
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</main>
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]) ?>
+            <?= Alert::widget() ?>
+            <?= $content ?>
+        </div>
+    </main>
+    <?php 
+    \yii\bootstrap4\Modal::begin([
+        'title' => '<h2>Корзина</h2>',
+        'id' => 'busket',
+        'size'=> 'modal-lg',
+        'footer' => '<button type="button" class="btn btn-default" 
+        data-dismiss="modal">Закрити корзину</button>
+            <button type="button" class="btn btn-success">Оформити замовлення</button>
+            <button type="button" class="btn btn-danger" onclick="clearBusket()">Очистити корзину</button>',
+    ]);
+    \yii\bootstrap4\Modal::end();
+    ?>
 
-<?php $this->endBody() ?>
+    <?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>

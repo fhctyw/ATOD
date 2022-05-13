@@ -4,14 +4,15 @@ namespace app\controllers;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\Products;
-use \app\models\LoginForm;
-use \app\models\RegisterForm;
-use \app\models\BusketForm;
+use app\models\LoginForm;
+use app\models\RegisterForm;
+use app\models\Busket;
 use app\models\User;
 
 class HomeController extends Controller
@@ -130,7 +131,7 @@ class HomeController extends Controller
      */
     public function actionBusket()
     {
-        $model = new BusketForm();
+        $model = new Busket();
 
         return $this->render('busket');
     }
@@ -141,14 +142,14 @@ class HomeController extends Controller
      */
     public function actionSearch()
     {
-        $search = Yii::$app->request->get('search');
+       /*  $search = Yii::$app->request->get('search');
         $search1 = str_replace(' ', '', $search);
-        $query = Products::find()->where(['ProductName','replace(title," ", "")',$search1]);
+        $query = Products::find()->where(['product_name','replace(title," ", "")',$search1]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
 
         ]);
-        return $this->render('index',compact('dataProvider','search1')); 
+        return $this->render('index',compact('dataProvider','search1'));  */
 
     }
 }
