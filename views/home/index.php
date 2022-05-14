@@ -1,24 +1,38 @@
 <?php
+
 use yii\widgets\LinkPager;
+
 /** @var yii\web\View $this */
 
-$this->title = 'Atod';
+use yii\helpers\Html;
+use yii\helpers\Url;
 ?>
-<div class="site-index">
 
-<head>
-    <meta charset="utf-8" />
-    <title>Slider</title>
-</head>
-<body>
-    <section class="product"> 
-        <h2 class="product-category">Топ продажів</h2>
-        <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+<div class="silder">
+    <section class="product">
+        <h2 class="product-category">Найкращі збірки</h2>
+        <button class="pre-btn"><?= Html::img(Url::to('@web/images/slider_images/arrow.png')) ?></button>
+        <button class="nxt-btn"><?= Html::img(Url::to('@web/images/slider_images/arrow.png')) ?></button>
         <div class="product-container">
-            <div class="product-card">
+
+            <?php
+            for ($i = 1; $i < 11; $i++) {
+                echo '<div class="product-card">';
+                echo Html::beginTag('div', ['class' => 'product-image']);
+                echo Html::img(Url::to($best_builds[$i]->url_photo), ['class' => 'product-thumb']);
+                echo Html::button('Додати у кошик', ['class' => 'card-btn']);
+                echo Html::endTag('div');
+
+                echo Html::beginTag('div', ['class' => 'product-info']);
+                echo Html::tag('h2', strlen($best_builds[$i]->product_name) > 20 ? mb_substr($best_builds[$i]->product_name, 0, 20) . '...' : $best_builds[$i]->product_name, ['class' => 'product-brand']);
+                echo Html::tag('span', $best_builds[$i]->price . ' грн', ['class' => 'price']);
+                echo Html::endTag('div');
+                echo '</div>';
+            }
+            ?>
+
+            <!-- <div class="product-card">
                 <div class="product-image">
-                    <span class="discount-tag_p">Хіт продажу</span>
                     <img src="images/1.jpeg" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
@@ -27,8 +41,10 @@ $this->title = 'Atod';
                     <p class="product-short-description">Ігровий комп’ютер</p>
                     <span class="price">37 134 грн</span>
                 </div> 
-            </div>
-            <div class="product-card">
+            </div> -->
+
+
+            <!--  <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_k">Вибір користувачів</span>
                     <img src="images/2.jpeg" class="product-thumb" alt="">
@@ -134,27 +150,24 @@ $this->title = 'Atod';
                     <span class="price">32 651 грн</span>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
+</div>
 
-</body>
 
-    <div class="body-content">
+<div class="content">
+    <div class="col-lg-4">
+        <?php
+        foreach ((array) $products as $product) {
+            echo $product->product_name . '<br>';
+        }
 
-            <div class="col-lg-4">
-            <?php 
-                  foreach ((array) $products as $product) {
-                      echo $product->product_name . '<br>';
-                    } 
+        ?>
+        <a href="<?= \yii\helpers\Url::to(['/busket/add', 'id' =>
+                    $product->product_id]) ?>" data-id="<?= $product->product_id ?>" class="btn btn-default add-to-busket">У кошик</a>
+        <a class="btn btn-default add-to-busket " href="/busket/add?id=2">Добавити у кошик</a>
 
-                    ?>
-                <a href="<?= \yii\helpers\Url::to(['/busket/add', 'id'=>
-                $product->product_id])?>" data-id="<?= $product->product_id?>"  class="btn btn-default add-to-busket">У кошик</a>
-                    <a class ="btn btn-default add-to-busket "href="/busket/add?id=2">Добавити у кошик</a>
-                    
-             <?php  //var_dump($products); ?>
-            </div>
-        </div>
-
+        <?php  //var_dump($products); 
+        ?>
     </div>
 </div>

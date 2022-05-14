@@ -65,21 +65,9 @@ class HomeController extends Controller
     {
         //$products = Products::find()->where(['ProductName'=>'NVIDIA GeForce RTX 3050'])->one();
         //$products = Products::find()->where(['Product_Id' => 20 ])->All();
-        $products = Products::find()->where(['<=','product_id' ,19 ])->All();
-        return $this->render('index',compact('products'));
-
-        /*$query = Products::find()->where(['<=','Product_Id' ,19 ])->All();
-        $pagination = new Pagination([
-            'defaultPageSize' =>10,
-            'totalCount' => $query->count(),
-        ]);
-        $model = $query->offset($pagination->offset)->limit($pagination->limit)->all();
-        
-
-    return $this->render('index', [
-         'pagination' => $pagination,
-         'model' => $model,
-    ]);*/
+        $best_builds = Products::find()->limit(11)->All();
+        $products = Products::find()->offset(11)->limit(21)->All();
+        return $this->render('index', compact('products', 'best_builds'));
     }
    /** Register action
     *
