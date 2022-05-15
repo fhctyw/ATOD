@@ -6,4 +6,4 @@ use yii\helpers\Url;
     echo $products->product_name;
 ?>
 
-<a href="<?= \yii\helpers\Url::to(['/user/index', 'id' => $product->product_id]) ?>" data-id="<?= $product->product_id ?>"></a>
+<a class="btn btn-success btn-lg m-4" href=<?= Url::to(['home/product', 'id' => $product->product_id])  ?>>Купити</a>
