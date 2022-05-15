@@ -51,19 +51,14 @@ AppAsset::register($this);
             
         </ul>
 </header>
-    
-    <main role="main" class="flex-shrink-0">
-        <div class="container">
-                <?= Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>
-        </div>
+
+    <main role="main" class="container-fluid">
+        <?= $content ?>
     </main>
-    <?php 
+
+    <?php
     \yii\bootstrap4\Modal::begin([
-        'title' => '<h2>Корзина</h2>',
+        'title' => '<h2>Кошик</h2>',
         'id' => 'busket',
         'size'=> 'modal-lg',
         'footer' => '<button type="button" class="btn btn-default" 

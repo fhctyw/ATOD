@@ -63,11 +63,11 @@ class HomeController extends Controller
      */
     public function actionIndex()
     {
-        //$products = Products::find()->where(['ProductName'=>'NVIDIA GeForce RTX 3050'])->one();
-        //$products = Products::find()->where(['Product_Id' => 20 ])->All();
-        $best_builds = Products::find()->limit(11)->All();
-        $products = Products::find()->offset(11)->limit(21)->All();
-        return $this->render('index', compact('products', 'best_builds'));
+        $best_builds = Products::find()->orderBy('price DESC')->limit(10)->all();
+        $query = Products::find()->offset(10);
+        $pages = new Pagination(['totalCount'=>$query->count(), 'pageSize'=>20]);
+        $products = Products::find()->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('index', compact('best_builds', 'pages', 'products'));
     }
    /** Register action
     *
@@ -129,12 +129,12 @@ class HomeController extends Controller
      *
      * @return string
      */
-    public function actionBusket()
+/*     public function actionBusket()
     {
         $model = new Busket();
 
         return $this->render('busket');
-    }
+    } */
     /**
      * Displays search.
      *
