@@ -33,6 +33,7 @@ class Busket extends ActiveRecord {
         $_SESSION['busket.sum'] -= $sumMinus;
       unset($_SESSION['busket'][$id]);//удалити цей товар
     }
+    
 }
 
 

@@ -4,16 +4,30 @@ function showbusket(busket) {
     $('#busket').modal();
 }
 
+function getBusket(){
+    $.ajax({ // ajax запрос
+        url: '../busket/show',
+        type: 'GET',
+        success: function(res){
+            if(!res) alert('Помилка');
+            showbusket(res);
+        },
+        error: function(){
+            alert('Error!');
+        }
+    })
+    return false;
+}
+
 $('#busket .modal-body').on('click','.del-item',function(){
     var id = $(this).data('id');
     $.ajax({ // ajax запрос
-        url: './busket/del-item',
+        url: '../busket/del-item',
         data: {id:id},
         type: 'GET',
         success: function(res){
             if(!res) alert('Помилка');
             showbusket(res);
-            console.log(id);
         },
         error: function(){
             alert('Error!');
@@ -23,7 +37,7 @@ $('#busket .modal-body').on('click','.del-item',function(){
 
 function clearBusket(){ //функція очищення корзини
     $.ajax({ // ajax запрос
-        url: './busket/clear',
+        url: '../busket/clear',
         type: 'GET',
         success: function(res){
             if(!res) alert('Помилка');
@@ -37,10 +51,10 @@ function clearBusket(){ //функція очищення корзини
 
 $('.add-to-busket').on('click',function(e){
 e.preventDefault(); // аби при нажиманні кнопки не перекідувало на другий адрес
-var id = $(this).data('id')
+var id = $(this).data('id') // qty = $('#qty').val()
 $.ajax({ // ajax запрос
-    url: './busket/add',
-    data: {id:id},
+    url: '../busket/add',
+    data: {id:id},//qty:qty
     type: 'GET',
     success: function(res){
         if(!res) alert('Помилка');

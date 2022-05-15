@@ -13,14 +13,14 @@ $this->title = 'Atod';
 <body>
     <section class="product"> 
         <h2 class="product-category">Топ продажів</h2>
-        <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+        <button class="pre-btn"><img src="images/slider_images/arrow.png" alt=""></button>
+        <button class="nxt-btn"><img src="images/slider_images/arrow.png" alt=""></button>
         <div class="product-container">
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_p">Хіт продажу</span>
-                    <img src="images/1.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
+                    <img src="images/slider_images/1.jpeg" class="product-thumb" alt="">
+                    <button class="card-btn add-to-busket">Додати у кошик</button>
                 </div>
                 <div class="product-info">
                     <h2 class="product-brand">Epic Nuker v1.5</h2>
@@ -31,8 +31,8 @@ $this->title = 'Atod';
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_k">Вибір користувачів</span>
-                    <img src="images/2.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
+                    <img src="images/slider_images/2.jpeg" class="product-thumb" alt="">
+                    <button class="card-btn add-to-busket">Додати у кошик</button>
                 </div>
                 <div class="product-info">
                     <h2 class="product-brand">Epic Nuker v1.0</h2>
@@ -43,7 +43,7 @@ $this->title = 'Atod';
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_p">Хіт продажу</span>
-                    <img src="images/3.jpeg" class="product-thumb" alt="">
+                    <img src="images/slider_images/3.jpeg" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
                 <div class="product-info">
@@ -55,7 +55,7 @@ $this->title = 'Atod';
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_p">Хіт продажу</span>
-                    <img src="images/4.png" class="product-thumb" alt="">
+                    <img src="images/slider_images/4.png" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
                 <div class="product-info">
@@ -67,7 +67,7 @@ $this->title = 'Atod';
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_r">Рекомендуємо</span>
-                    <img src="images/5.jpeg" class="product-thumb" alt="">
+                    <img src="images/slider_images/5.jpeg" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
                 <div class="product-info">
@@ -79,7 +79,7 @@ $this->title = 'Atod';
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_k">Вибір користувачів</span>
-                    <img src="images/6.jpeg" class="product-thumb" alt="">
+                    <img src="images/slider_images/6.jpeg" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
                 <div class="product-info">
@@ -91,7 +91,7 @@ $this->title = 'Atod';
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_n">Новинка</span>
-                    <img src="images/7.jpeg" class="product-thumb" alt="">
+                    <img src="images/slider_images/7.jpeg" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
                 <div class="product-info">
@@ -103,7 +103,7 @@ $this->title = 'Atod';
             <div class="product-card">
                 <div class="product-image">
                     <span class="discount-tag_n">Новинка</span>
-                    <img src="images/8.jpeg" class="product-thumb" alt="">
+                    <img src="images/slider_images/8.jpeg" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
                 <div class="product-info">
@@ -114,7 +114,7 @@ $this->title = 'Atod';
             </div>
             <div class="product-card">
                 <div class="product-image">
-                    <img src="images/9.jpeg" class="product-thumb" alt="">
+                    <img src="images/slider_images/9.jpeg" class="product-thumb" alt="">
                     <button class="card-btn">Додати у кошик</button>
                 </div>
                 <div class="product-info">
@@ -125,8 +125,8 @@ $this->title = 'Atod';
             </div>
             <div class="product-card">
                 <div class="product-image">
-                    <img src="images/10.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
+                    <img src="images/slider_images/10.jpeg" class="product-thumb" alt="">
+                    <button class="card-btn ">Додати у кошик</button>
                 </div>
                 <div class="product-info">
                     <h2 class="product-brand">Gigabyte Windforce v3.0</h2>
@@ -140,7 +140,11 @@ $this->title = 'Atod';
 </body>
 
     <div class="body-content">
+    <label for="avatar">Choose a profile picture:</label>
 
+<input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg">
             <div class="col-lg-4">
             <?php 
                   foreach ((array) $products as $product) {
@@ -150,7 +154,7 @@ $this->title = 'Atod';
                     ?>
                 <a href="<?= \yii\helpers\Url::to(['/busket/add', 'id'=>
                 $product->product_id])?>" data-id="<?= $product->product_id?>"  class="btn btn-default add-to-busket">У кошик</a>
-                    <a class ="btn btn-default add-to-busket "href="/busket/add?id=2">Добавити у кошик</a>
+                    <a class ="btn btn-default add-to-busket" data-id="<?= $product->product_id ?>" href="/busket/add?id=<?= $product->product_id ?>">Добавити у кошик</a>
                     
              <?php  //var_dump($products); ?>
             </div>

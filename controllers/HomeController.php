@@ -6,14 +6,16 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use app\models\Products;
 use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\Busket;
 use app\models\User;
+use app\models\UploadForm;
 
 class HomeController extends Controller
 {
@@ -65,7 +67,7 @@ class HomeController extends Controller
     {
         //$products = Products::find()->where(['ProductName'=>'NVIDIA GeForce RTX 3050'])->one();
         //$products = Products::find()->where(['Product_Id' => 20 ])->All();
-        $products = Products::find()->where(['<=','product_id' ,19 ])->All();
+        $products = Products::find()->where(['<=','product_id' ,20 ])->All();
         return $this->render('index',compact('products'));
 
         /*$query = Products::find()->where(['<=','Product_Id' ,19 ])->All();
@@ -163,6 +165,21 @@ class HomeController extends Controller
         ]);
         return $this->render('index',compact('dataProvider','search1'));  */
 
+    }
+
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return;
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
     }
 }
 
