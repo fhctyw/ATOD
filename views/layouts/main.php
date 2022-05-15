@@ -44,26 +44,21 @@ AppAsset::register($this);
                     <li><a class="link" href="/home/login">Увійти</a></li>
                     <li><a class="link" href="/home/register">Зареєструватись</a></li>
                     <!--<li class="aside_img"><a href="#"><img src="web\images\img\shopping-cart.png" width="40px"/></a></li>-->
-                    <a><i class="fas fa-shopping-basket"></i></a>
+                    <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
                     <a><i class="fa-solid fa-magnifying-glass"></i></a>
                 </ul>
             </li>
             
         </ul>
 </header>
-    
-    <main role="main" class="flex-shrink-0">
-        <div class="container">
-                <?= Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>
-        </div>
+
+    <main role="main" class="container-fluid">
+        <?= $content ?>
     </main>
-    <?php 
+
+    <?php
     \yii\bootstrap4\Modal::begin([
-        'title' => '<h2>Корзина</h2>',
+        'title' => '<h2>Кошик</h2>',
         'id' => 'busket',
         'size'=> 'modal-lg',
         'footer' => '<button type="button" class="btn btn-default" 

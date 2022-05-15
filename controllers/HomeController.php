@@ -6,14 +6,16 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 use app\models\Products;
 use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\Busket;
 use app\models\User;
+use app\models\UploadForm;
 
 class HomeController extends Controller
 {
@@ -63,11 +65,11 @@ class HomeController extends Controller
      */
     public function actionIndex()
     {
-        //$products = Products::find()->where(['ProductName'=>'NVIDIA GeForce RTX 3050'])->one();
-        //$products = Products::find()->where(['Product_Id' => 20 ])->All();
-        $best_builds = Products::find()->limit(11)->All();
-        $products = Products::find()->offset(11)->limit(21)->All();
-        return $this->render('index', compact('products', 'best_builds'));
+        $best_builds = Products::find()->orderBy('price DESC')->limit(10)->all();
+        $query = Products::find()->offset(10);
+        $pages = new Pagination(['totalCount'=>$query->count(), 'pageSize'=>20]);
+        $products = Products::find()->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('index', compact('best_builds', 'pages', 'products'));
     }
    /** Register action
     *
@@ -129,12 +131,12 @@ class HomeController extends Controller
      *
      * @return string
      */
-    public function actionBusket()
+/*     public function actionBusket()
     {
         $model = new Busket();
 
         return $this->render('busket');
-    }
+    } */
     /**
      * Displays search.
      *
@@ -151,6 +153,21 @@ class HomeController extends Controller
         ]);
         return $this->render('index',compact('dataProvider','search1'));  */
 
+    }
+
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return;
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
     }
 }
 
