@@ -2,17 +2,16 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\User;
-//use app\models\Products;
-//use app\models\Feedbacks;
 use \yii\base\Controller;
+
 class UserController extends Controller {
     
-    public function actionIndex() {
-
-        $users = User::findbyId('1');
-        //$products = Products::find()->all();
-        //$feedback = Feedbacks::find()->all();
+    public function actionIndex() 
+    {
+        $id = Yii::$app->request->get('id');
+        $user = User::findById($id);
         //var_dump($users);
         //die;
         return $this->render('index',compact('users'));
