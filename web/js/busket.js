@@ -49,19 +49,25 @@ function clearBusket(){ //функція очищення корзини
     })
 }
 
-$('.add-to-busket').on('click',function(e){
-e.preventDefault(); // аби при нажиманні кнопки не перекідувало на другий адрес
-var id = $(this).data('id') // qty = $('#qty').val()
-$.ajax({ // ajax запрос
-    url: '../busket/add',
-    data: {id:id},//qty:qty
-    type: 'GET',
-    success: function(res){
-        if(!res) alert('Помилка');
-        showbusket(res);
-    },
-    error: function(){
-        alert('Error!');
+function onClick(e) 
+{
+    e.preventDefault(); // аби при нажиманні кнопки не перекідувало на другий адрес
+    var id = $(this).data('id');
+    var params = 
+    { 
+        // ajax запрос
+        url: '../busket/add',
+        data: {id:id},
+        type: 'GET',
+        success: function(res){
+            if(!res) alert('Помилка');
+            showbusket(res);
+        },
+        error: function(errorThrown) {
+            alert('Error!');
+        }
     }
-})
-})
+    $.ajax(params);
+}
+
+$('.add-to-busket').on('click', onClick)

@@ -1,164 +1,66 @@
 <?php
+
+use app\models\Products;
+use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\LinkPager;
-/** @var yii\web\View $this */
 
-$this->title = 'Atod';
 ?>
-<div class="site-index">
 
-<head>
-    <meta charset="utf-8" />
-    <title>Slider</title>
-</head>
-<body>
-    <section class="product"> 
-        <h2 class="product-category">Топ продажів</h2>
-        <button class="pre-btn"><img src="images/slider_images/arrow.png" alt=""></button>
-        <button class="nxt-btn"><img src="images/slider_images/arrow.png" alt=""></button>
+<div class="silder">
+    <section class="product">
+        <h2 class="product-category">Найкращі збірки</h2>
+        <button class="pre-btn"><?= Html::img(Url::to('@web/images/slider_images/arrow.png')) ?></button>
+        <button class="nxt-btn"><?= Html::img(Url::to('@web/images/slider_images/arrow.png')) ?></button>
         <div class="product-container">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_p">Хіт продажу</span>
-                    <img src="images/slider_images/1.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn add-to-busket">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">Epic Nuker v1.5</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">37 134 грн</span>
-                </div> 
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_k">Вибір користувачів</span>
-                    <img src="images/slider_images/2.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn add-to-busket">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">Epic Nuker v1.0</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">29 249 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_p">Хіт продажу</span>
-                    <img src="images/slider_images/3.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">Speedster v1.2</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">18 218 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_p">Хіт продажу</span>
-                    <img src="images/slider_images/4.png" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">VERSUM Galaxy I v2.3</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">25 806 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_r">Рекомендуємо</span>
-                    <img src="images/slider_images/5.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">VERSUM Lich v1.1</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">23 670 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_k">Вибір користувачів</span>
-                    <img src="images/slider_images/6.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">VERSUM Epic Nuker v1.3</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">34 923 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_n">Новинка</span>
-                    <img src="images/slider_images/7.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">King Lich v5.0</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">87 397 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag_n">Новинка</span>
-                    <img src="images/slider_images/8.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">Paladin v5.1</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">75 992 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="images/slider_images/9.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">Speedster GTS v1.2</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">33 251 грн</span>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="images/slider_images/10.jpeg" class="product-thumb" alt="">
-                    <button class="card-btn ">Додати у кошик</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">Gigabyte Windforce v3.0</h2>
-                    <p class="product-short-description">Ігровий комп’ютер</p>
-                    <span class="price">32 651 грн</span>
-                </div>
-            </div>
-        </div>
+
+            <?php
+            foreach ($best_builds as $build) {
+                echo '<div class="product-card">';
+                echo Html::beginTag('div', ['class' => 'product-image']);
+                echo Html::img(Url::to($build->url_photo), ['class' => 'product-thumb']);
+                echo Html::button('Додати у кошик', ['class' => 'card-btn']);
+                echo Html::endTag('div');
+
+                echo Html::beginTag('div', ['class' => 'product-info']);
+                echo Html::tag('h2', strlen($build->product_name) > 20 ? mb_substr($build->product_name, 0, 20) . '...' : $best_builds[$i]->product_name, ['class' => 'product-brand']);
+                echo Html::tag('span', $build->price . ' грн', ['class' => 'price']);
+                echo Html::endTag('div');
+                echo '</div>';
+            }
+            ?>
     </section>
+</div>
 
-</body>
+<div class="container-fluid" style="width: 90%;">
+<div class="row">
+    <?php foreach($products as $product): ?>
+    <div class="col-md-6">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <img class="img-fluid" src=<?= $product->url_photo ?>>
+                    <h4 class="text"><?= $product->product_name ?></h4>
+                </div>
+                <div class="col d-flex align-items-center text-center">
+                    <div class="col d-flex flex-column align-items-center">
+                        <div class="row">
+                            <h1 class="text m-4"><?= $product->price . " грн" ?></h1>
 
-    <div class="body-content">
-    <label for="avatar">Choose a profile picture:</label>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-success btn-lg m-4" target="_blank" rel="noopener noreferrer" href=<?= $product->url_site ?>>Купити</a>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-primary btn-lg add-to-busket m-4" type="button" href=<?= Url::to(['busket/add', 'id' => $product->product_id]) ?> data-id=<?= $product->product_id ?>>Добавити в кошик</button>
+                        </div>
 
-<input type="file"
-       id="avatar" name="avatar"
-       accept="image/png, image/jpeg">
-            <div class="col-lg-4">
-            <?php 
-                  foreach ((array) $products as $product) {
-                      echo $product->product_name . '<br>';
-                    } 
-
-                    ?>
-                <a href="<?= \yii\helpers\Url::to(['/busket/add', 'id'=>
-                $product->product_id])?>" data-id="<?= $product->product_id?>"  class="btn btn-default add-to-busket">У кошик</a>
-                    <a class ="btn btn-default add-to-busket" data-id="<?= $product->product_id ?>" href="/busket/add?id=<?= $product->product_id ?>">Добавити у кошик</a>
-                    
-             <?php  //var_dump($products); ?>
+                    </div>
+                </div>
             </div>
         </div>
-
-    </div>
+    </div>    
+    <?php endforeach; ?>
 </div>
+</div>
+<?= LinkPager::widget(['pagination'=>$pages]) ?>

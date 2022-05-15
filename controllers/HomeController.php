@@ -65,23 +65,11 @@ class HomeController extends Controller
      */
     public function actionIndex()
     {
-        //$products = Products::find()->where(['ProductName'=>'NVIDIA GeForce RTX 3050'])->one();
-        //$products = Products::find()->where(['Product_Id' => 20 ])->All();
-        $products = Products::find()->where(['<=','product_id' ,20 ])->All();
-        return $this->render('index',compact('products'));
-
-        /*$query = Products::find()->where(['<=','Product_Id' ,19 ])->All();
-        $pagination = new Pagination([
-            'defaultPageSize' =>10,
-            'totalCount' => $query->count(),
-        ]);
-        $model = $query->offset($pagination->offset)->limit($pagination->limit)->all();
-        
-
-    return $this->render('index', [
-         'pagination' => $pagination,
-         'model' => $model,
-    ]);*/
+        $best_builds = Products::find()->orderBy('price DESC')->limit(10)->all();
+        $query = Products::find()->offset(10);
+        $pages = new Pagination(['totalCount'=>$query->count(), 'pageSize'=>20]);
+        $products = Products::find()->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('index', compact('best_builds', 'pages', 'products'));
     }
    /** Register action
     *
@@ -143,12 +131,12 @@ class HomeController extends Controller
      *
      * @return string
      */
-    public function actionBusket()
+/*     public function actionBusket()
     {
         $model = new Busket();
 
         return $this->render('busket');
-    }
+    } */
     /**
      * Displays search.
      *

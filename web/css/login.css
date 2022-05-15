@@ -1,11 +1,3 @@
-body
-{
-    background: #d2e4f7;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-attachment: fixed;
-    font-family: sans-serif;
-}
 .form
 {
     position: absolute;

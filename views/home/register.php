@@ -8,7 +8,7 @@ use yii\bootstrap4\Html;
     <title>Реєстрація</title>
 </head>
 <body>
-    <form class="form" action="../home/login.php" method="POST">
+    <form class="form" action="login.php" method="POST">
         <h1>Реєстрація</h1>
         <p>Створити профіль</p>
         <div class="input-form">
