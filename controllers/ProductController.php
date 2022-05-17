@@ -2,15 +2,15 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Products;
 use \yii\base\Controller;
 
 class ProductController extends Controller {
     public function actionIndex() 
     {   
-        $products = Products::findByProductId('8');
-        //var_dump($products);
-        //die;
+        $id = Yii::$app->request->get('id');
+        $products = Products::findByProductId($id);
         return $this->render('index',compact('products'));
     }
 }
