@@ -6,10 +6,11 @@ use Yii;
 
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-    public $_id;
-    public $_name;
-    public $_password;
-    public $_authKey;
+   /*  public $id;
+    public $name;
+    public $email;
+    public $password;
+    public $url_photo; */
     //public $_accessToken;
 
     public static function tableName()
@@ -39,15 +40,13 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return null;
     }
 
-    public static function findByUsername($username)
+    public static function findByUsername($name)
     {
-        $user = static::find()->where(['name'=>$username])->one();
-        if ($user) {
-            $user->_id = $user->id;
-            $user->_name = $user->name;
-            $user->_password = $user->password;
+        $user = static::find()->where(['name'=>$name])->one();
+        if ($user) 
+        {
             return $user;
-        } 
+        }
         return null;
     }
 
@@ -55,9 +54,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         $user = static::find()->where(['id'=>$id])->one();
         if ($user) {
-            $user->_id = $user->id;
-            $user->_name = $user->name;
-            $user->_password = $user->password;
             return $user;
         } 
         return null;
@@ -65,21 +61,21 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
     public function getAuthKey()
     {
-        return $this->_authKey;
+        return null;
     }
 
     public function validateAuthKey($authKey)
     {
-        return $this->_authKey === $authKey;
+        return true;
     }
 
     public function validatePassword($password)
     {
-        return $this->_password === $password;
+        return $this->password === $password;
     }
 }

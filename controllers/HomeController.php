@@ -14,6 +14,7 @@ use app\models\Products;
 use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\Busket;
+use app\models\TestModel;
 use app\models\User;
 use app\models\UploadForm;
 
@@ -89,8 +90,15 @@ class HomeController extends Controller
 
     public function actionTest()
     {
-        
-        die;
+        $model = new TestModel();
+        $model->load(Yii::$app->request->post());
+        if ($model->check())
+        {
+            //echo 'not all null';
+        } 
+        else
+            //echo 'all null';
+        return $this->render('test', compact('model'));
     }
 
     /**

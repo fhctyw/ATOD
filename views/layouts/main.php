@@ -32,25 +32,31 @@ AppAsset::register($this);
 </head>
 
 <body class="d-flex flex-column h-100">
-<?php $this->beginBody() ?>
+    <?php $this->beginBody() ?>
 
-<header class="header">
+    <header class="header">
         <ul class="menu_items">
             <li class="logo">
                 <a href=<?= Url::to(['/home/index']) ?>>ATOD</a>
             </li>
             <li>
                 <ul class="menu_items aside">
-                    <li><a class="link" href="/home/login">Увійти</a></li>
-                    <li><a class="link" href="/home/register">Зареєструватись</a></li>
-                    <!--<li class="aside_img"><a href="#"><img src="web\images\img\shopping-cart.png" width="40px"/></a></li>-->
-                    <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
-                    <a><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <? if (Yii::$app->user->isGuest): ?>
+                        <li><a class="link" href="/home/login">Увійти</a></li>
+                        <li><a class="link" href="/home/register">Зареєструватись</a></li>
+                        <!--<li class="aside_img"><a href="#"><img src="web\images\img\shopping-cart.png" width="40px"/></a></li>-->
+                        <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
+                        <a><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <? else: ?>
+                        <li><a data-method="post" href=<?= Url::to('home/logout') ?>>Вийти</a></li>
+                        <li><i class="fa-solid"></i>Ти (<?= Yii::$app->user->identity->name ?>)</li>
+                        
+                    <? endif; ?>
                 </ul>
             </li>
-            
+
         </ul>
-</header>
+    </header>
 
     <main role="main" class="container-fluid">
         <?= $content ?>
@@ -60,7 +66,7 @@ AppAsset::register($this);
     \yii\bootstrap4\Modal::begin([
         'title' => '<h2>Кошик</h2>',
         'id' => 'busket',
-        'size'=> 'modal-lg',
+        'size' => 'modal-lg',
         'footer' => '<button type="button" class="btn btn-default" 
         data-dismiss="modal">Закрити корзину</button>
             <button type="button" class="btn btn-success">Оформити замовлення</button>
@@ -71,5 +77,6 @@ AppAsset::register($this);
 
     <?php $this->endBody() ?>
 </body>
+
 </html>
 <?php $this->endPage() ?>
