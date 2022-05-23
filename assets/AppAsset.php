@@ -23,8 +23,8 @@ class AppAsset extends AssetBundle
         'css/header.css',
         'css/site.css',
         'css/slider.css',
-        'css/login.css',
-        'css/register.css',
+        //'css/login.css',
+        //'css/register.css',
         
     ];
     public $js = [

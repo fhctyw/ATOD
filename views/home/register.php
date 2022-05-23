@@ -1,32 +1,26 @@
 <?php 
+
+//var_dump($model); 
+
 use yii\widgets\ActiveForm;
 use yii\bootstrap4\Html;
-?>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Реєстрація</title>
-</head>
-<body>
-    <form class="form" action="login.php" method="POST">
-        <h1>Реєстрація</h1>
-        <p>Створити профіль</p>
-        <div class="input-form">
-            <input type="text" name="name" placeholder="Ваше ім'я">
-        </div>
-        <div class="input-form">
-            <input type="text" name="email" placeholder="Введіть email">
-        </div>
-        <div class="input-form">
-            <input type="password" name="password" placeholder="Придумайте пароль">
-        </div>
-        <div class="input-form">
-            <input type="submit" name="do_login" value="Зареєструватися">
-        </div>
-        <div class="ifit">
-        <a href="#" class="ifit">Вже є профіль? Увійдіть</a>
-        </div>
-    </form>
 
-</body>
-</html>
+?> 
+
+<div class="w-25 mx-auto border p-3 rounded text-white">
+   <h1 class="text-primary">Реєстрація </h1>
+     
+   <?php $form = ActiveForm::begin(['class'=>'form-horizontal']) ?> 
+
+     <?= $form->field($model,'name')->textInput()->label('Ім`я користувача') ?>  
+     <?= $form->field($model,'email')->textInput()->label('Пошта') ?>
+     <?= $form->field($model,'password')->passwordInput()->label('Пароль') ?> 
+
+     <div> 
+       <button type="submit" class="btn btn-primary">Зареєструватися</button> 
+     </div> 
+    
+     <p class="mt-3 text-muted">Вже є профіль? <a href=<?= yii\helpers\Url::to(['/home/login']) ?>> Увійти </a></p>
+ 
+   <?php ActiveForm::end() ?>
+</div>

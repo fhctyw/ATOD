@@ -11,13 +11,15 @@ class BusketController extends Controller {
 
     public function actionAdd()
     {
-        $id = Yii::$app->request->get('id');
+        $id = Yii::$app->request->get('id');//отримати id товару
+        $qty = (int)Yii::$app->request->get('qty');//отримати кількість
+        $qty = !$qty ? 1 : $qty;
         $product = Products::findOne($id);
         if(empty($product)) return false;
         $session=Yii::$app->session;
         $session->open();
         $busket = new Busket();
-        $busket->addToBusket($product);
+        $busket->addToBusket($product,$qty);//$qty
         $this->layout=false;
         return $this->render('busket-modal',compact('session')); 
     }
@@ -38,6 +40,13 @@ class BusketController extends Controller {
         $session->open();
         $busket = new Busket();
         $busket->recalc($id);  //перерахунок
+        $this->layout=false;
+        return $this->render('busket-modal',compact('session')); 
+    }
+
+    public function actionShow(){
+        $session=Yii::$app->session;
+        $session->open();
         $this->layout=false;
         return $this->render('busket-modal',compact('session')); 
     }

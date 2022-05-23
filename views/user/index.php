@@ -2,8 +2,10 @@
 ?>
 <h1> DataBse content </h1>
 <?php 
-foreach ((array) $users as $user) {
-    echo $user->id. '<br>';
-}
+use yii\helpers\Html;
+use yii\helpers\Url;
 
+    echo $user->user_id;
 ?>
+
+<a href=<?= Url::to(['user/index', 'id' => $user->user_id])?> ></a>
