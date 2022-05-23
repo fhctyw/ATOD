@@ -26,13 +26,10 @@ class RegisterForm extends Model
         if ($this->validate())
         {
             $user = new User();
-            $user->_name = $this->name;
-            $user->_password = $this->password;
-            $comm = Yii::$app->db->createCommand('INSERT INTO users (name, email, Password) VALUES(:name, :email, :password)');
-            $comm->bindParam(':name', $user->_name);
-            $comm->bindParam(':email', $this->email);
-            $comm->bindParam(':password', $user->_password);
-            $comm->execute();
+            $user->name = $this->name;
+            $user->email = $this->email;
+            $user->password = $this->password;
+            $user->save();
             return Yii::$app->user->login($user, 3600*24*30);
         }
         return false;
