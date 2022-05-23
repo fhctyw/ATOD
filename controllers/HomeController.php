@@ -14,6 +14,8 @@ use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\Busket;
 use app\models\User;
+use app\models\ProductSearch;
+use app\models\CheckboxList;
 
 class HomeController extends Controller
 {
@@ -94,6 +96,12 @@ class HomeController extends Controller
         return $this->render('test');
     }
 
+   
+
+
+
+
+
     /**
      * Login action.
      *
@@ -153,8 +161,15 @@ class HomeController extends Controller
 
         ]);
         return $this->render('index',compact('dataProvider','search1'));  */
-
+        //////////////////////////////////////////////////////////////////////////////////////
+        $model = new CheckboxList();
+        $model->load(Yii::$app->request->post());      
+        $product = Products::find()->all();
+        
+        return $this->render('search',compact('model', 'product'));
     }
+
+    
 
 
 
