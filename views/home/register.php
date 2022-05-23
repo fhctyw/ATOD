@@ -8,8 +8,8 @@ use yii\bootstrap4\Html;
 ?> 
 <?php $form = ActiveForm::begin(['class'=>'form-horizontal']) ?> 
 <?= $form->field($model,'name')->textInput()->label('Ім`я користувача') ?>  
-<?= $form->field($model,'password')->passwordInput()->label('Пароль') ?>
-<?= $form->field($model,'password')->passwordInput()->label('Повторіть пароль') ?> 
+<?= $form->field($model,'email')->textInput()->label('Пошта') ?>
+<?= $form->field($model,'password')->passwordInput()->label('Пароль') ?> 
  
 <div> 
    <button type="submit" class="btn btn-primary">Зареєструватися</button> 
