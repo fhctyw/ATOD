@@ -2,10 +2,9 @@
 use yii\widgets\LinkPager;
 
 
-
 $image = Yii::$app->user->identity;
-  //echo \yii\helpers\Html::img("@web/uploads/{$image['url_photo']}",['alt'=> "@web/uploads/{$image['name']}",'height'=>500]);
-var_dump($builds_part);
+  echo \yii\helpers\Html::img("@web/uploads/{$image['url_photo']}",['alt'=> "@web/uploads/{$image['name']}",'height'=>500]) . '<br>';
+  echo Yii::$app->user->identity->name  . '<br>';
   echo $user->name.  '<br>';
   foreach($builds as $build)
   {
@@ -21,7 +20,5 @@ var_dump($builds_part);
  
 </pre>
 <?
-//var_dump($builds);
-var_dump($products);
 
   //LinkPager::widget(['pagination'=>$pages]) -->
