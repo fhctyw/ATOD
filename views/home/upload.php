@@ -1,7 +1,6 @@
 <?php
 use yii\widgets\ActiveForm;
 ?>
-<?php if(!(Yii::$app->user->identity->url_photo)): ?>
 <label for="avatar">Choose a profile picture:</label>
 <?php var_dump(Yii::$app->user->identity->id) ?>
 
@@ -12,7 +11,6 @@ use yii\widgets\ActiveForm;
     <button>Submit</button>
 
 <?php ActiveForm::end() ?>
-<?php else: ?>
 <h2> Done </h2>
 <?php
 
@@ -22,4 +20,3 @@ use yii\widgets\ActiveForm;
  var_dump($image->url_photo); */
 
  ?>
-<?php endif;?>
