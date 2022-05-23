@@ -12,9 +12,8 @@ class Products extends ActiveRecord
 
 public $_product;
 public $_id;
-public $_characteristic;
 public $_name;
-public $_cost;
+public $_price;
 public $_productphoto;
 
 public static function tableName()
@@ -60,14 +59,9 @@ public static function tableName()
         return $this->_id;
     }
 
-    public function getCharacteristic()
-    {
-        return $this->_characteristic;
-    }
-
     public function getCost()
     {
-        return $this->_cost;
+        return $this->_pice;
     }
 
     public function getProductphoto()
