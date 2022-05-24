@@ -10,10 +10,9 @@ class Products extends ActiveRecord
 
 /* public $_product;
 public $_id;
-public $_characteristic;
 public $_name;
-public $_cost;
-public $_productphoto; */
+public $_price;
+public $_productphoto;*/
 
 public static function tableName()
     {
