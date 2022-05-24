@@ -10,9 +10,7 @@ class ProductController extends Controller {
     public function actionIndex() 
     {   
         $id = Yii::$app->request->get('id');
-        $products = Products::findByProductId($id);
-        //var_dump($products);
-        //die;
+        $products = Products::findIdentity($id);
         return $this->render('index',compact('products'));
     }
 }
