@@ -11,7 +11,7 @@ class ProductController extends Controller {
     public function actionIndex() 
     {   
         $id = Yii::$app->request->get('id');
-        $products = Products::findByProductId($id);
+        $products = Products::findIdentity($id);
         $characteristics = Characteristics::find()->where(['product_id' => $id])->all();
         //echo Html::beginTag('div', ['class' => 'product-image']);
         //echo Html::img(Url::to($products->url_photo), ['class' => 'product-thumb']);
