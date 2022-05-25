@@ -41,17 +41,16 @@ AppAsset::register($this);
             </li>
             <li>
                 <ul class="menu_items aside">
-                    <? if (Yii::$app->user->isGuest): ?>
+                    <?php if (Yii::$app->user->isGuest): ?>
                         <li><a class="link" href="/home/login">Увійти</a></li>
                         <li><a class="link" href="/home/register">Зареєструватись</a></li>
-                        <!--<li class="aside_img"><a href="#"><img src="web\images\img\shopping-cart.png" width="40px"/></a></li>-->
                         <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
                         <a><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <? else: ?>
+                    <?php else: ?>
                         <li><a data-method="post" href=<?= Url::to('home/logout') ?>>Вийти</a></li>
-                        <li><i class="fa-solid"></i>Ти (<?= Yii::$app->user->identity->name ?>)</li>
+                        <li><i class="fa-solid"></i>Ти ()</li>
                         
-                    <? endif; ?>
+                    <?php endif; ?>
                 </ul>
             </li>
 
