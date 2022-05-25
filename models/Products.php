@@ -30,19 +30,6 @@ public static function tableName()
         return static::findOne($id);
     }
 
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        /*
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-        */
-
-        return null;
-    }
-
     public static function findByProductId($id)
     {
         $product = static::find()->where(['product_id'=>$id])->one();
@@ -59,9 +46,9 @@ public static function tableName()
         return $this->_id;
     }
 
-    public function getCost()
+    public function getPrice()
     {
-        return $this->_pice;
+        return $this->_price;
     }
 
     public function getProductphoto()
