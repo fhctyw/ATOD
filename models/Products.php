@@ -14,7 +14,7 @@ public $_name;
 public $_price;
 public $_productphoto;*/
 
-public static function tableName()
+    public static function tableName()
     {
         return 'products';
     }
