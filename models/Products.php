@@ -3,16 +3,18 @@
 namespace app\models;
 
 use Yii;
+
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 
 class Products extends ActiveRecord 
 {
 
-/* public $_product;
+public $_product;
 public $_id;
 public $_name;
 public $_price;
-public $_productphoto;*/
+public $_productphoto;
 
     public static function tableName()
     {
@@ -28,18 +30,29 @@ public $_productphoto;*/
         return static::findOne($id);
     }
 
+    public static function findByProductId($id)
+    {
+        $product = static::find()->where(['product_id'=>$id])->one();
+        if ($product) {
+            $product->_id = $product->product_id;
+            $product->_name = $product->product_name;
+            return $product;
+        } 
+        return null;
+    }
+
     public function getId()
     {
-        return $this->id;
+        return $this->_id;
     }
 
-    public function getCost()
+    public function getPrice()
     {
-        return $this->price;
+        return $this->_price;
     }
 
-    public function getProductPhoto()
+    public function getProductphoto()
     {
-        return $this->url_photo;
+        return $this->_productphoto;
     }
 }
