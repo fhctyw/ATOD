@@ -9,13 +9,6 @@ use yii\helpers\Url;
 
 class Products extends ActiveRecord 
 {
-
-public $_product;
-public $_id;
-public $_name;
-public $_price;
-public $_productphoto;
-
     public static function tableName()
     {
         return 'products';
@@ -34,8 +27,6 @@ public $_productphoto;
     {
         $product = static::find()->where(['product_id'=>$id])->one();
         if ($product) {
-            $product->_id = $product->product_id;
-            $product->_name = $product->product_name;
             return $product;
         } 
         return null;
@@ -43,16 +34,16 @@ public $_productphoto;
 
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
     public function getPrice()
     {
-        return $this->_price;
+        return $this->price;
     }
 
     public function getProductphoto()
     {
-        return $this->_productphoto;
+        return $this->productphoto;
     }
 }

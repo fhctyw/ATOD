@@ -21,4 +21,13 @@ class Builds extends ActiveRecord
         $build->parts = BuildPart::find()->where(['build_id'=>$id])->all();
         return $build;
     }
+
+    public function price()
+    {
+        $sum = 0.0;
+        foreach ($this->parts as $part) {
+            $sum += $part->getPart()->price;
+        }
+        return $sum;
+    }
 }
