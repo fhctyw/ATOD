@@ -4,7 +4,7 @@
 
 <head>
     <title>Профіль</title>
-   <link rel="stylesheet" href="profile.css">
+   <link rel="stylesheet">
 </head>
 
 <body>
@@ -34,7 +34,8 @@
                         <? endif;?>
                         <div class="price_wrp">
                             Ціна збірки:<br>
-                            <span class="price">99999 грн.</span>
+                            <? //var_dump($build->parts) ?>
+                            <span class="price"><?= $build->price() ?>грн.</span>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,8 @@ use app\models\RegisterForm;
 use app\models\Busket;
 use app\models\TestModel;
 use app\models\User;
+use app\models\ProductSearch;
+use app\models\CheckboxList;
 use app\models\UploadForm;
 
 class HomeController extends Controller
@@ -88,18 +90,20 @@ class HomeController extends Controller
         return $this->render('register', compact('model'));
     }
 
+
+
+
     public function actionTest()
     {
-        $model = new TestModel();
-        $model->load(Yii::$app->request->post());
-        if ($model->check())
-        {
-            //echo 'not all null';
-        } 
-        else
-            //echo 'all null';
-        return $this->render('test', compact('model'));
+        
+        return $this->render('test');
     }
+
+   
+
+
+
+
 
     /**
      * Login action.
@@ -152,7 +156,7 @@ class HomeController extends Controller
      */
     public function actionSearch()
     {
-       /*  $search = Yii::$app->request->get('search');
+        /*$search = Yii::$app->request->get('search');
         $search1 = str_replace(' ', '', $search);
         $query = Products::find()->where(['product_name','replace(title," ", "")',$search1]);
         $dataProvider = new ActiveDataProvider([
@@ -160,7 +164,12 @@ class HomeController extends Controller
 
         ]);
         return $this->render('index',compact('dataProvider','search1'));  */
-
+        //////////////////////////////////////////////////////////////////////////////////////
+        $model = new CheckboxList();
+        $model->load(Yii::$app->request->post());      
+        $product = Products::find()->all();
+        
+        return $this->render('search',compact('model', 'product'));
     }
 
     public function actionUpload()

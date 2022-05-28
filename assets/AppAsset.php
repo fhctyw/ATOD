@@ -23,14 +23,14 @@ class AppAsset extends AssetBundle
         'css/header.css',
         'css/site.css',
         'css/slider.css',
-        'css/login.css',
-        'css/register.css',
-        'css/profile.css'
+        'css/login.register.css',
+        'css/profile.css',
         
     ];
     public $js = [
         'js/busket.js',
-        'js/SLscript.js'
+        'js/SLscript.js',
+        'js/Constructor.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
