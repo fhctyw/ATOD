@@ -16,8 +16,8 @@ use yii\widgets\LinkPager;
         ?>
 </div>
 
-<div class="cost">
-    <section class="cost">
+<div class="price">
+    <section class="price">
         <?php
             echo Html::tag($product->price. ' грн')
         ?>
