@@ -4,26 +4,17 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use app\models\BuildPart;
 
-
-class Builds extends ActiveRecord {
-
-    public $_build;
-    public $_id;
-    public $_name;
-    public $_price;
-    public $_buildphoto;
-    public $_parts;
+class Builds extends ActiveRecord 
+{
+    public $parts;
 
     public static function tableName()
     {
         return 'builds';
     }
 
-        /**
-     * {@inheritdoc}
-     */
-    
     public static function findIdentity($id)
     {
         return static::findOne($id);
@@ -48,10 +39,17 @@ class Builds extends ActiveRecord {
     public function getPrice($id)
     {
         return $this->_price;
+        $build = static::findOne($id);
+        $build->parts = BuildPart::find()->where(['build_id'=>$id])->all();
+        return $build;
     }
 
-    public function getBuildphoto()
+    public function price()
     {
-        return $this->_buildphoto;
+        $sum = 0.0;
+        foreach ($this->parts as $part) {
+            $sum += $part->getPart()->price;
+        }
+        return $sum;
     }
 }
