@@ -12,12 +12,12 @@ use yii\widgets\LinkPager;
 <div class="photo">
     <section class="build">
         <?php
-            echo Html::img(Url::to($build->url_photo));
+            echo \yii\helpers\Html::img("@web/images/products/{$build['url_photo']}")
         ?>
 </div>
 
-<div class="cost">
-    <section class="cost">
+<div class="price">
+    <section class="price">
         <?php
             echo Html::tag($build->price. ' грн')
         ?>

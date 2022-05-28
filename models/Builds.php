@@ -13,6 +13,7 @@ class Builds extends ActiveRecord {
     public $_name;
     public $_price;
     public $_buildphoto;
+    public $_parts;
 
     public static function tableName()
     {
@@ -44,7 +45,7 @@ class Builds extends ActiveRecord {
         return $this->_id;
     }
 
-    public function getPrice()
+    public function getPrice($id)
     {
         return $this->_price;
     }
