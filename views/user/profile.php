@@ -13,7 +13,7 @@
             <section class="computers">
                 <div class="profile">
                     <div>
-                        <?=  \yii\helpers\Html::img("@web/uploads/{$user['url_photo']}",['alt'=> "@web/uploads/{$user['name']}",'height'=>150])?>
+                        <?=  \yii\helpers\Html::img("@web/uploads/profile/{$user['url_photo']}",['alt'=> "@web/uploads/{$user['name']}",'height'=>150])?>
                     </div>
                     <div class="profile_info">
                        <p>Ім'я користувача: <? echo $user->name ?></p>
