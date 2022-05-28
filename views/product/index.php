@@ -5,21 +5,21 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 
-    echo $products->product_name;
+    var_dump($product);
     
 ?>
 
 <div class="photo">
     <section class="product">
         <?php
-            echo Html::img(Url::to($products->url_photo));
+            echo Html::img(Url::to($product->url_photo));
         ?>
 </div>
 
 <div class="cost">
     <section class="cost">
         <?php
-            echo Html::tag($products->price. ' грн')
+            echo Html::tag($product->price. ' грн')
         ?>
 </div>
 

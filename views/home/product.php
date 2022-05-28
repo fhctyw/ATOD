@@ -1,5 +1,5 @@
 <?= 
 
-var_dump($productss->product_id); 'br'.
-var_dump($productss);
+var_dump($products->product_id); 'br'.
+var_dump($products);
 ?>
