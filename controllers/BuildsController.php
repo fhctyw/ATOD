@@ -13,9 +13,12 @@ class BuildsController extends Controller {
     public function actionIndex() 
     {
         $id = Yii::$app->request->get('id');
-        $build = Builds::findByBuildId($id);
-        //$characteristics = Characteristics::find()->where(['builds_id' => $id])->all();
-    return $this->render('index',compact('build', /*'characteristics'*/));
+        $build = Builds::findIdentity($id);
+        foreach($build->parts as $part)
+        {
+            $characteristics = Characteristics::find()->where(['product_id' => $part->product_id])->all();
+        }
+    return $this->render('index',compact('build', 'characteristics'));
     }
 }
 ?>
