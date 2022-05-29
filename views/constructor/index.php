@@ -6,22 +6,29 @@ use yii\helpers\Url;
 
 ?>
 
-<p><?="Назва збірки: ".$build->build_name ?></p>
-<p><?="Ціна збірки: ".$build->price().' грн'  ?></p>
-
-
-<!-- <div class="row">
-    <div class="col-3 border border-dark">
-        <?php foreach ($products as $product) : ?>
-            <img class="img-fluid" src=<?= $product->url_photo ?> 
-            data-product_id=<?= $product->product_id ?>
-            data-url_photo=<?=$product->url_photo?>
-            data-price=<?= $product->price?>
-            data-url_site=<?=$product->url_site?>
-            data-product_name=<?=$product->product_name?>></img>
+<div class="row" style="height: 100vh">
+    <div class="col-2 h-100 overflow-auto">
+        <?php foreach ($products as $product): ?>
+            <img class="img-fluid" src=<?= $product->url_photo?>
+                data-product_id=<?=$product->product_id?>
+                data-product_name=<?=json_encode($product->product_name, JSON_UNESCAPED_UNICODE)?>
+                data-url_photo=<?=$product->url_photo?>
+                data-price=<?=$product->price?>
+                data-url_site=<?=$product->url_site?>>
+            </img>
         <?php endforeach; ?>
+    
     </div>
-    <div class="col-9" id="desk">
-        
+    <div class="col-10">
+        <div class="col h-100">
+            <div class="row-9 border border-dark">
+                <div class="container" id="desk">
+                    <div class="row"></div>
+                </div>
+            </div>
+            <div class="row-3">
+                <button class="btn btn-success btn-lg">Зібрати пк</button>
+            </div>
+        </div>
     </div>
-</div> -->
+</div>

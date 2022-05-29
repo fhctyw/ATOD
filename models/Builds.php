@@ -30,4 +30,9 @@ class Builds extends ActiveRecord
         }
         return $sum;
     }
+
+    public static function getLastId()
+    {
+        return static::find()->max('build_id');
+    }
 }
