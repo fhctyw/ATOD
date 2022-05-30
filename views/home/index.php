@@ -39,8 +39,10 @@ use yii\widgets\LinkPager;
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <img class="img-fluid" src=<?= $product->url_photo ?>>
-                    <h4 class="text"><?= $product->product_name ?></h4>
+                    <a  href = <?= Url::to(['product/index', 'id' => $product->product_id]) ?>>
+                         <img class="img-fluid" src=<?= $product->url_photo ?>>
+                    </a>
+                    <h4><a class="text" href=<?= Url::to(['product/index', 'id' => $product->product_id]) ?>><?= $product->product_name ?></a></h4>
                 </div>
                 <div class="col d-flex align-items-center text-center">
                     <div class="col d-flex flex-column align-items-center">

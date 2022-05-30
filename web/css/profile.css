@@ -10,7 +10,7 @@ body, html{
     font-family: "QanelasItalic";
     src: url("/fonts/Qanelas-SemiBoldItalic.ttf");
 }
-body{
+/* body{
     font-family: 'Qanelas';
     font-style: normal;
     font-weight: 400;
@@ -19,7 +19,7 @@ body{
     color:#FFFFFF;
     min-height: 100%;
     flex-direction: column;
-}
+} */
 li{
     list-style-type:none;
 }

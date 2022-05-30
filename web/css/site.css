@@ -84,3 +84,6 @@ a.desc:after {
 .del-item{
     cursor: pointer;
 }
+a{
+    color: rgb(0, 0, 0);
+}
