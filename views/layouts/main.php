@@ -48,7 +48,8 @@ AppAsset::register($this);
                         <a><i class="fa-solid fa-magnifying-glass"></i></a>
                     <?php else: ?>
                         <li><a data-method="post" href=<?= Url::to('home/logout') ?>>Вийти</a></li>
-                        <li><i class="fa-solid"></i>Ти (<?= Yii::$app->user->identity->name ?>)</li>
+                        <li><a class="fa-solid fa-screwdriver-wrench" href=<?=Url::to('./constructor/index')?>></a></li>
+                        <li><i class="fa-solid"></i>Ви (<?=Yii::$app->user->identity->name ?>)</li>
                         
                     <?php endif; ?>
                 </ul>
