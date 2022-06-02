@@ -4,31 +4,41 @@ body, html{
 }
 
 .build_name{
+    font-family: sans-serif;
+    color:black;
     font-size: 24px;
 }
 
-.build_name{
-    font-family: sans-serif;
-        color:black;
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
-.characteristic{
-   padding: 0 0 0 35px;
-   display: flex;
-   flex-wrap: wrap;
-   align-items: flex-start;
-   justify-content: space-between;
-   margin: 0px 0 0px;
-   background-color: white;
-   border: 1px solid white;
-   border-radius: 20px;
-   color:black;
-   font-family: sans-serif;
+.col-5{
+    height: 450px;
+}
+
+.col-7{
+    height: 470px;
 }
 
 .scroll-div{
+    padding: 0 0 0 35px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0px 0 0px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    color:black;
+    font-family: sans-serif;
     width: 100%;
-    height: 40%;
+    height: 100%;
     overflow: hidden;
     overflow-y: scroll;
 }
