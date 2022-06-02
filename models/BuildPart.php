@@ -21,6 +21,6 @@ class BuildPart extends ActiveRecord
 
     public static function findIdentity($id)
     {
-        return static::find()->where(['product_id'=>$id]);
+        return static::find()->where(['product_id'=>$id])->one();
     }
 }
