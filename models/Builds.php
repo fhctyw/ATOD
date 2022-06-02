@@ -21,6 +21,15 @@ class Builds extends ActiveRecord
         $build->parts = BuildPart::find()->where(['build_id'=>$id])->all();
         return $build;
     }
+    public static function findAllIdentity($id)
+    {
+        $builds = static::find()->where(['user_id' => $id])->all();
+        foreach($builds as $build)
+        {
+            $build->parts = BuildPart::find()->where(['build_id'=>$build->build_id])->all();
+        }
+        return $builds;
+    }
 
     public function price()
     {
@@ -29,5 +38,10 @@ class Builds extends ActiveRecord
             $sum += $part->getPart()->price;
         }
         return $sum;
+    }
+
+    public static function getLastId()
+    {
+        return static::find()->max('build_id');
     }
 }

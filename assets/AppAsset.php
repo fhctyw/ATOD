@@ -25,7 +25,8 @@ class AppAsset extends AssetBundle
         'css/slider.css',
         'css/login.register.css',
         'css/product.css',
-        
+        'css/profile.css',
+        'css/builds.css',
     ];
     public $js = [
         'js/busket.js',

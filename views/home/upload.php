@@ -15,7 +15,8 @@ use yii\widgets\ActiveForm;
 <?php
 
     $image = Yii::$app->user->identity;
-  echo \yii\helpers\Html::img("@web/uploads/{$image['url_photo']}",['alt'=> "@web/uploads/{$image['name']}",'height'=>500]);
+  echo \yii\helpers\Html::img("@web/uploads/{$image['url_photo']}",['alt'=> "@web/uploads/{$image['name']}",'height'=>150]);
+  echo \yii\helpers\Html::img("@web/uploads/{$image->url_photo}",['height'=>150]);
  /*  echo \yii\helpers\Html::img($image->url_photo);
  var_dump($image->url_photo); */
 
