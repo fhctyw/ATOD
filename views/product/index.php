@@ -28,8 +28,8 @@ use yii\widgets\LinkPager;
             </div>
         </div>
         <div class="col-7">
-        <div class="scroll-div">
-            <section class="characteristic">
+        <div class="scroll_div">
+            <section class="characteristics">
                 <?php
                 foreach($characteristics as $characteristic)
                 {
