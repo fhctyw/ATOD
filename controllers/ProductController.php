@@ -13,10 +13,6 @@ class ProductController extends Controller {
         $id = Yii::$app->request->get('id');
         $product = Products::findIdentity($id);
         $characteristics = Characteristics::find()->where(['product_id' => $id])->all();
-        //echo Html::beginTag('div', ['class' => 'product-image']);
-        //echo Html::img(Url::to($products->url_photo), ['class' => 'product-thumb']);
-        //var_dump($products);
-        //die;
         return $this->render('index',compact('product', 'characteristics'));
     }
 }
