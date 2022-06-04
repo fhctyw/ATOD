@@ -109,6 +109,10 @@ function post_build() {
     }); */
 }
 
+$('.category').on('click', function() {
+    var v = document.getElementById($(this).data('id'));
+    console.log(v);
+});
 $('.img-fluid').on('load', load);
 $('.img-fluid').on('click', addPart);
 $('.btn').on('click', post_build);

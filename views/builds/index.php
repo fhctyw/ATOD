@@ -23,18 +23,16 @@ use yii\widgets\LinkPager;
                     </div>
             </div>
             <div class="col-7">
-                    <div class ="scroll-div">
-                        <div class="characteristic">
-                                <?php
-                                    foreach($characteristics as $characteristic)
-                                    { 
-                                        echo $characteristic->name_char;
-                                        echo $characteristic->value_char. '<br>';
-                                    }
-                                ?>
+                <div class ="scroll-div">
+                        <?php
+                            foreach($characteristics as $characteristic)
+                            { 
+                                echo $characteristic->name_char;
+                                echo $characteristic->value_char. '<br>';
+                            }
+                        ?>
                 <div class="price">
-                        <?= $build->price(). ' грн'?>
+                    <?= $build->price(). ' грн'?>
                 </div>
-                    </div>
                 </div>
             </div>

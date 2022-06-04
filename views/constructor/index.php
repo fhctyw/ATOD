@@ -3,11 +3,23 @@
 use app\models\Builds;
 use app\models\Products;
 use yii\helpers\Url;
+use yii\widgets\Menu;
 
 ?>
 
-<div class="row" style="height: 100vh">
-    <div class="col-2 h-100 overflow-auto">
+<div class="row">
+    <div class="col-3">
+        <?= Menu::widget([
+                'items'=>$menu->items,
+            ]) ?>
+    </div>
+    <div class="col-9">
+        
+    </div>
+</div>
+
+<!-- <div class="row" style="display:flex; flex-direction:row; height:100%">
+    <div class="col-2">
         <?php foreach ($products as $product): ?>
             <img class="img-fluid" src=<?= $product->url_photo?>
                 data-product_id=<?=$product->product_id?>
@@ -31,4 +43,4 @@ use yii\helpers\Url;
             </div>
         </div>
     </div>
-</div>
+</div> -->
