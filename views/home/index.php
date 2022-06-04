@@ -40,8 +40,8 @@ use yii\widgets\LinkPager;
             foreach ($best_builds as $build) {
                 echo '<div class="product-card">';
                 echo Html::beginTag('div', ['class' => 'product-image']);
-                echo Html::img(Url::to($build->url_photo), ['class' => 'product-thumb']);
-                echo Html::button('Добавити в кошик', ['class' => 'card-btn']);
+                echo Html::img(Url::to($build->url_photo), ['class' => 'product-thumb','data-location' => Url::to(['product/index', 'id' => $build->product_id])]);
+                echo Html::button('Добавити в кошик', ['class' => 'card-btn add-to-busket','data-id'=> "$build->product_id"]);
                 echo Html::endTag('div');
 
                 echo Html::beginTag('div', ['class' => 'product-info']);
@@ -62,7 +62,7 @@ use yii\widgets\LinkPager;
             <div class="row">
                 <div class="col text-center">
                         <a href=<?= Url::to(['product/index','id'=>$product->product_id]) ?>>
-                      <img class="img-fluid" src=<?= $product->url_photo ?> data-location="<?= Url::to(['product/index','id'=>$product->product_id]) ?>" style="cursor: pointer;">
+                      <img class="img-fluid" src=<?= $product->url_photo ?> style = "width:200px;height:200px;">
                     </a>
                     <h4><a class="text item_content" href=<?= Url::to(['product/index', 'id' => $product->product_id]) ?>><?= $product->product_name ?></a></h4>
                 </div>

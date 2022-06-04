@@ -15,8 +15,7 @@ productContainers.forEach((item, i) => {
     })
 })
 
-
-$(".img-fluid").click(function() {
+$(".product-thumb").click(function() {
     var location = $(this).data("location");
     window.location = location;
 });
