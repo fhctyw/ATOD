@@ -72,6 +72,7 @@ class HomeController extends Controller
         $query = Products::find()->offset(10);
         $pages = new Pagination(['totalCount'=>$query->count(), 'pageSize'=>20]);
         $products = Products::find()->offset($pages->offset)->limit($pages->limit)->all();
+
         return $this->render('index', compact('best_builds', 'pages', 'products'));
     }
    /** Register action
@@ -165,11 +166,26 @@ class HomeController extends Controller
         ]);
         return $this->render('index',compact('dataProvider','search1'));  */
         //////////////////////////////////////////////////////////////////////////////////////
+        /*if(isset())-
+        {
+
+        }*/
         $model = new CheckboxList();
-        $model->load(Yii::$app->request->post());      
-        $product = Products::find()->all();
-        
-        return $this->render('search',compact('model', 'product'));
+        $query = Products::find();
+        $pages = new Pagination(['totalCount'=>$query->count(), 'pageSize'=>20]);
+        $products = Products::find()->offset($pages->offset)->limit($pages->limit)->all();
+
+
+        if($model->load(Yii::$app->request->post()) && $model->check())
+        {
+            $query = Products::find()->where(["category"=>$model->categories]);
+            $pages = new Pagination(['totalCount'=>$query->count(), 'pageSize'=>20]);
+            $products =  $query->offset($pages->offset)->limit($pages->limit)->all();
+
+            
+        }    
+
+        return $this->render('search',compact('model', 'products', 'pages'));
     }
 
     public function actionUpload()
