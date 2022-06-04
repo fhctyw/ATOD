@@ -35,28 +35,27 @@ use yii\widgets\LinkPager;
 <div class="container-fluid" style="width: 90%;">
 <div class="row">
     <?php foreach($products as $product): ?>
-    <div class="col-md-6">
+       <div class="col-md-6">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <a  href = <?= Url::to(['product/index', 'id' => $product->product_id]) ?>>
-                         <img class="img-fluid" src=<?= $product->url_photo ?>>
+                        <a href=<?= Url::to(['product/index','id'=>$product->product_id]) ?>>
+                      <img class="img-fluid" src=<?= $product->url_photo ?> data-location="<?= Url::to(['product/index','id'=>$product->product_id]) ?>" style="cursor: pointer;">
                     </a>
-                    <h4><a class="text" href=<?= Url::to(['product/index', 'id' => $product->product_id]) ?>><?= $product->product_name ?></a></h4>
-                </div>
+                     <h4 class="text"><?= $product->product_name ?></h4>
+                    </div>
                 <div class="col d-flex align-items-center text-center">
                     <div class="col d-flex flex-column align-items-center">
                         <div class="row">
                             <h1 class="text m-4"><?= $product->price . " грн" ?></h1>
-
                         </div>
                         <div class="row">
-                            <a class="btn btn-success btn-lg m-4" target="_blank" rel="noopener noreferrer" href=<?= $product->url_site ?>>Купити</a>
+                            <a class="btn btn-success btn-lg m-4" target="_blank" rel="noopener noreferrer" data-location = "<?= $product->url_site ?>" href=<?= $product->url_site ?>>Купити</a>
                         </div>
                         <div class="row">
                             <button class="btn btn-primary btn-lg add-to-busket m-4" type="button" href=<?= Url::to(['busket/add', 'id' => $product->product_id]) ?> data-id=<?= $product->product_id ?>>Добавити в кошик</button>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>

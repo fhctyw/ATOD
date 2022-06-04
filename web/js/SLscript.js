@@ -14,3 +14,10 @@ productContainers.forEach((item, i) => {
         item.scrollLeft -= containerWidth;
     })
 })
+
+
+$(".img-fluid").click(function() {
+    var location = $(this).data("location");
+    window.location = location;
+});
+
