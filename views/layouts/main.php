@@ -17,7 +17,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
+<html lang="<?= Yii::$app->language ?>" >
 
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
@@ -31,7 +31,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column">
     <?php $this->beginBody() ?>
 
     <header class="header">
@@ -41,17 +41,17 @@ AppAsset::register($this);
             </li>
             <li>
                 <ul class="menu_items aside">
-                    <? if (Yii::$app->user->isGuest): ?>
+                    <?php if (Yii::$app->user->isGuest): ?>
                         <li><a class="link" href="/home/login">Увійти</a></li>
                         <li><a class="link" href="/home/register">Зареєструватись</a></li>
-                        <!--<li class="aside_img"><a href="#"><img src="web\images\img\shopping-cart.png" width="40px"/></a></li>-->
                         <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
                         <a><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <? else: ?>
+                    <?php else: ?>
                         <li><a data-method="post" href=<?= Url::to('home/logout') ?>>Вийти</a></li>
-                        <li><i class="fa-solid"></i>Ти ()</li>
+                        <li><a class="fa-solid fa-screwdriver-wrench" href=<?=Url::to('./constructor/index')?>></a></li>
+                        <li><i class="fa-solid"></i>Ви (<?=Yii::$app->user->identity->name ?>)</li>
                         
-                    <? endif; ?>
+                    <?php endif; ?>
                 </ul>
             </li>
 
