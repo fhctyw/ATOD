@@ -7,12 +7,12 @@ use yii\base\Model;
 
 class BuildsForm extends Model
 {
-    public $name;
-    
+    public $build_name;
+
     public function rules()
     {
         return [
-            
+            ['build_name', 'required']
         ];
     }
 
