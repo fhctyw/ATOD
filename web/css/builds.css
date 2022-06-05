@@ -9,23 +9,17 @@ body, html{
     font-size: 24px;
 }
 
-/* .row {
-    display: flex;
-    flex-wrap: wrap;
-    height: 500px;
-    margin-right: -15px;
-    margin-left: -15px;
+.container_roma{
+    position: relative;
+    left: 50px;
 }
 
-.col-5{
-    height: 450px;
+.builds_button{
+    position: relative;
+    left: 30px;
 }
 
-.col-7{
-    height: 470px;
-} */
-
-.scroll-div{
+.scroll-div-roma{
     padding: 0 0 0 35px;
     display: flex;
     flex-wrap: wrap;
