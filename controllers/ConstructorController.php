@@ -76,6 +76,9 @@ class ConstructorController extends Controller
 
     public function actionTest()
     {
+        $json = $this->menu->getConfigByCategory('motherboards');
+        var_dump($json);
+        die;
         return $this->render('test');
     }
 

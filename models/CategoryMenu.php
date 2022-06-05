@@ -10,7 +10,10 @@ use yii\helpers\Html;
 class CategoryMenu extends Model
 {
     public $items = [];
+    public $categoryItems = [];
     public $products = [];
+    public $jsonFile = '../constructor/config.json';
+    public $jsonContent;
 
     public function addItem($label, $options=[])
     {
@@ -40,7 +43,12 @@ class CategoryMenu extends Model
     public function initItems($categories, $options1=[], $options2=[])
     {
         foreach ($categories as $elem) {
-            $this->addItem($elem, $options1);
+            if (is_array($elem)) {
+                $this->addItem($elem[0]);
+                array_push($this->categoryItems, $elem[1]);
+            }
+            else
+                $this->addItem($elem, $options1);
         }
 
         foreach ($this->items as $arr) {
@@ -56,6 +64,25 @@ class CategoryMenu extends Model
                 ]));
             }
         }
+    }
+
+    public function getJson()
+    {
+        $this->jsonContent = file_get_contents($this->jsonFile);
+        $this->jsonContent = json_decode($this->jsonContent, true);
+        return $this->jsonContent;
+    }
+
+    public function getConfigByCategory($category)
+    {
+        return $this->jsonContent ? $this->jsonContent[$category] : $this->getJson()[$category];
+    }
+
+    public function removeByCategory()
+    {
+        /* foreach ($variable as $key => $value) {
+            # code...
+        } */
     }
 
     public function process($indexs, $options=[])
