@@ -47,6 +47,7 @@ AppAsset::register($this);
                         <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
                         <a><i class="fa-solid fa-magnifying-glass"></i></a>
                     <?php else: ?>
+                        <li><a href=<?=Url::to("/user/profile") ?>><img src = <?= Url::to("@web/images/products/profile.png") ?> style = "width:30px;height:30px;"></img></a></li>
                         <li><a data-method="post" href=<?= Url::to('logout') ?>>Вийти</a></li>
                         <li><a class="fa-solid fa-screwdriver-wrench" href=<?=Url::to('./constructor/index')?>></a></li>
                         <li><i class="fa-solid"></i>Ви (<?=Yii::$app->user->identity->name ?>)</li>
