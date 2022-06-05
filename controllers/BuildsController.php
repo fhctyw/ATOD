@@ -14,9 +14,10 @@ class BuildsController extends Controller {
     {
         $id = Yii::$app->request->get('id');
         $build = Builds::findIdentity($id);
+        $characteristics = [];
         foreach($build->parts as $part)
         {
-            $characteristics = Characteristics::find()->where(['product_id' => $part->product_id])->all();
+            array_push($characteristics, [Products::findIdentity($part->product_id)->product_name, Characteristics::findIdentity($part->product_id)]); 
         }
     return $this->render('index',compact('build', 'characteristics'));
     }
