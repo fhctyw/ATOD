@@ -14,3 +14,9 @@ productContainers.forEach((item, i) => {
         item.scrollLeft -= containerWidth;
     })
 })
+
+$(".product-thumb").click(function() {
+    var location = $(this).data("location");
+    window.location = location;
+});
+

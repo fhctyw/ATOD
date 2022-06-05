@@ -29,7 +29,7 @@ use yii\widgets\LinkPager;
         display: block;
     }
 </style>
-<div class="silder">
+<div class="slider">
     <section class="product">
         <h2 class="product-category">Найкращі збірки</h2>
         <button class="pre-btn"><?= Html::img(Url::to('@web/images/slider_images/arrow.png')) ?></button>
@@ -40,8 +40,8 @@ use yii\widgets\LinkPager;
             foreach ($best_builds as $build) {
                 echo '<div class="product-card">';
                 echo Html::beginTag('div', ['class' => 'product-image']);
-                echo Html::img(Url::to($build->url_photo), ['class' => 'product-thumb']);
-                echo Html::button('Добавити в кошик', ['class' => 'card-btn']);
+                echo Html::img(Url::to($build->url_photo), ['class' => 'product-thumb','data-location' => Url::to(['product/index', 'id' => $build->product_id])]);
+                echo Html::button('Добавити в кошик', ['class' => 'card-btn add-to-busket','data-id'=> "$build->product_id"]);
                 echo Html::endTag('div');
 
                 echo Html::beginTag('div', ['class' => 'product-info']);
@@ -61,8 +61,8 @@ use yii\widgets\LinkPager;
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <a  href = <?= Url::to(['product/index', 'id' => $product->product_id]) ?>>
-                         <img class="img-fluid" src=<?= $product->url_photo ?>>
+                        <a href=<?= Url::to(['product/index','id'=>$product->product_id]) ?>>
+                      <img class="img-fluid" src=<?= $product->url_photo ?> style = "width:200px;height:200px;">
                     </a>
                     <h4><a class="text item_content" href=<?= Url::to(['product/index', 'id' => $product->product_id]) ?>><?= $product->product_name ?></a></h4>
                 </div>
@@ -73,12 +73,12 @@ use yii\widgets\LinkPager;
 
                         </div>
                         <div class="row">
-                            <a class="btn btn-success btn-lg m-4" target="_blank" rel="noopener noreferrer" href=<?= $product->url_site ?>>Купити</a>
+                            <a class="btn btn-success btn-lg m-4" target="_blank" rel="noopener noreferrer" data-location = "<?= $product->url_site ?>" href=<?= $product->url_site ?>>Купити</a>
                         </div>
                         <div class="row">
                             <button class="btn btn-primary btn-lg add-to-busket m-4" type="button" href=<?= Url::to(['busket/add', 'id' => $product->product_id]) ?> data-id=<?= $product->product_id ?>>Добавити в кошик</button>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
