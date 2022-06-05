@@ -32,6 +32,11 @@ class Products extends ActiveRecord
         return null;
     }
 
+    public static function findByCategory($category)
+    {
+        return static::find()->where(['category'=>$category])->all();
+    }
+
     public function getId()
     {
         return $this->id;

@@ -1,15 +1,5 @@
 var arr = [];
 
-/* function checkArr(arr, id) {
-    b = true;
-    arr.forEach(elem => {
-        if (elem.product_id == id) {
-            b = false;
-        }
-    });
-    return b;
-} */
-
 function deleteFromArr(arr, id) {
     var i = 0;
     arr.forEach(elem => {
@@ -20,9 +10,17 @@ function deleteFromArr(arr, id) {
     });
 }
 
+function process(arr)
+{
+    send_arr = getArrIndexs(arr);
+    send_arr = send_arr.toString();
+    $.post("../constructor/process", {arr: send_arr});
+}
+
 function remove(e) {
     e.currentTarget.remove();
     deleteFromArr(arr, e.currentTarget.myParam);
+    process(arr);
     sessionStorage.setItem('arr', JSON.stringify(arr));
 }
 
@@ -30,9 +28,7 @@ function addPart(e)
 {
     e.preventDefault();
 
-    
-
-    if (sessionStorage.getItem('arr') != null){
+    if (sessionStorage.getItem('arr') != null) {
         arr = JSON.parse(sessionStorage.getItem('arr'));
     }
     
@@ -45,9 +41,8 @@ function addPart(e)
     }
 
     var row = document.getElementById('desk').children[0];
-    //if (checkArr(arr, product.product_id)) {
         arr.push(product);
-    //}
+    
 
     row.innerHTML = '';
     arr.forEach(elem => {
@@ -59,6 +54,7 @@ function addPart(e)
         row.appendChild(d);
     });
 
+    process(arr);
     sessionStorage.setItem('arr', JSON.stringify(arr));
 }
 
@@ -88,16 +84,35 @@ function getArrIndexs(arr) {
     return indexs;
 }
 
-function post_build() {
-    console.log('post_build()...');
-    arr = getArrIndexs(arr);
-    
-    $.post("../constructor/add", {arr: arr.toString()});
+function getValue(arr, name) {
+    var r;
+    arr.forEach(elem => {
+        if (elem.name == name)
+            r = elem.value;
+    });
+    return r;
+}
 
-    /* $.ajax({
-        type: "get",
-        url: "../constructor/add",
-        data: {'arr': JSON.stringify(arr)},
+function post_build(e) {
+    e.preventDefault();
+    arr = getArrIndexs(arr);
+    data = $(this).serializeArray();
+    data.push({name:'arr', value:arr.toString()});
+    //data.forEach(element => {
+        console.log({
+            build_name: getValue(data, 'BuildsForm[build_name]'),
+            arr: getValue(data, 'arr')
+        });
+        
+   // });
+
+    $.ajax({
+        type: "post",
+        url: "../constructor/post-build",
+        data: {
+            build_name: getValue(data, 'BuildsForm[build_name]'),
+            arr: getValue(data, 'arr')
+        },
         error: function(e)
         {
             console.log("error");
@@ -106,9 +121,15 @@ function post_build() {
         success: function(){
             console.log("success");
         } 
-    }); */
+    });
 }
 
-$('.img-fluid').on('load', load);
-$('.img-fluid').on('click', addPart);
-$('.btn').on('click', post_build);
+$('.ctgy-constr').on('click', addPart);
+$(this).on('load', load);
+$('.form-build').on('beforeSubmit', post_build);
+$('.category').on('click', function() {
+    var arr = Array.from(document.getElementsByClassName('cat-'+$(this.parentElement).data('id')));
+    arr.forEach(elem => {
+        elem.style.display = elem.style.display == 'none' ? 'inherit' : 'none';
+    });
+});

@@ -17,7 +17,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" >
 
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
@@ -47,7 +47,7 @@ AppAsset::register($this);
                         <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
                         <a><i class="fa-solid fa-magnifying-glass"></i></a>
                     <?php else: ?>
-                        <li><a data-method="post" href=<?= Url::to('home/logout') ?>>Вийти</a></li>
+                        <li><a data-method="post" href=<?= Url::to('logout') ?>>Вийти</a></li>
                         <li><a class="fa-solid fa-screwdriver-wrench" href=<?=Url::to('./constructor/index')?>></a></li>
                         <li><i class="fa-solid"></i>Ви (<?=Yii::$app->user->identity->name ?>)</li>
                         
