@@ -44,12 +44,14 @@ AppAsset::register($this);
                     <?php if (Yii::$app->user->isGuest): ?>
                         <li><a class="link" href="/home/login">Увійти</a></li>
                         <li><a class="link" href="/home/register">Зареєструватись</a></li>
-                        <a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket"></i></a>
-                        <a><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <li><a href="/home/search"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket "></i></a></li>
                     <?php else: ?>
-                        <li><a data-method="post" href=<?= Url::to('logout') ?>>Вийти</a></li>
+                        <li><a data-method="post" href=<?= Url::to('home/logout') ?>>Вийти</a></li>
+                        <li><a href=<?=Url::to("/user/profile") ?>><img src = <?= Url::to("@web/images/products/profile.png") ?> style = "width:20px;height:19px;"></img></a></li>
                         <li><a class="fa-solid fa-screwdriver-wrench" href=<?=Url::to('./constructor/index')?>></a></li>
-                        <li><i class="fa-solid"></i>Ви (<?=Yii::$app->user->identity->name ?>)</li>
+                        <li><a href="/home/search"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a href="#" onclick="return getBusket()"><i class="fas fa-shopping-basket "></i></a></li>
                         
                     <?php endif; ?>
                 </ul>

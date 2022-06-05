@@ -99,9 +99,24 @@ a.desc:after {
     background-color: #1E79D7;
 }
 a{
-    color: rgb(0, 0, 0);
+    color: white;
 }
-
+a:link {
+    text-decoration: none;
+}
+  
+a:visited {
+    text-decoration: none;
+}
+  
+a:hover {
+    text-decoration: none;
+    color: #7db5ef;
+}
+  
+a:active {
+    text-decoration: none;
+}
 
 
 

@@ -2,11 +2,11 @@
 namespace models;
 
 use Yii;
-use app\models\BuildPart;
-
+use app\models\UploadForm;
+use app\models\User;
 use Codeception\Util\Debug;
 
-class BuildPartTest extends \Codeception\Test\Unit
+class UploadFormTest extends \Codeception\Test\Unit
 {
         /**
      * @var \UnitTester
@@ -23,8 +23,12 @@ class BuildPartTest extends \Codeception\Test\Unit
 
     //test
 
-    public function upload()
+    public function testupload()
     {
-        
+        $model = User::findById(1);
+        $user_id = 1;
+        $user_photo = 'roma.png';
+        $this->assertEquals($model->id, $user_id);
+        $this->assertEquals($model->url_photo, $user_photo);
     }
 }
