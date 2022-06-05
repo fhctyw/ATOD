@@ -29,7 +29,7 @@ use yii\widgets\LinkPager;
         display: block;
     }
 </style>
-<div class="silder">
+<div class="slider">
     <section class="product">
         <h2 class="product-category">Найкращі збірки</h2>
         <button class="pre-btn"><?= Html::img(Url::to('@web/images/slider_images/arrow.png')) ?></button>
