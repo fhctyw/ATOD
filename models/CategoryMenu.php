@@ -47,15 +47,16 @@ class CategoryMenu extends Model
                 $this->addItem($elem[0]);
                 array_push($this->categoryItems, $elem[1]);
             }
-            else
+            else {
                 $this->addItem($elem, $options1);
+                array_push($this->categoryItems, $elem);
+            }
         }
-
-        foreach ($this->items as $arr) {
-            $ps = Products::findByCategory($arr['label']);
+        foreach ($this->categoryItems as $i => $arr) {
+            $ps = Products::findByCategory($arr);
             $this->products = array_merge($this->products, $ps);
             foreach ($ps as $p) {
-                $this->addItemInner($arr['label'], $p->product_name, array_merge($options2, [
+                $this->addItemInner($this->items[$i]['label'], $p->product_name, array_merge($options2, [
                     'data-product_id'=>$p->product_id,
                     'data-product_name'=>json_encode($p->product_name, JSON_UNESCAPED_UNICODE),
                     'data-url_photo'=>$p->url_photo,
