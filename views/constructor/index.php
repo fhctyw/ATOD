@@ -21,7 +21,9 @@ $this->registerJsFile('js/Constructor.js', [View::POS_BEGIN, 'depends' => \yii\w
     </div>
     <div class="col-9">
         <div class="col">
-            <div class="row-9 vh-100 border border-dark" style="overflow: auto;">
+        <h1> Власна збірка </h1>
+            <div class="row-9 vh-100 border text-primary" style="overflow: auto;">
+            <h2> Дошка </h2>
                 <div class="container" id="desk">
                     <div class="row"></div>
                 </div>
@@ -32,7 +34,7 @@ $this->registerJsFile('js/Constructor.js', [View::POS_BEGIN, 'depends' => \yii\w
                         ['options'=>['class'=>'form-build']])
                          ?> 
                     <?= $form->field($builds, 'build_name')->textInput()->label('Введіть назву збірки') ?>
-                    <button class="btn btn-success btn-lg">Зібрати пк</button> 
+                    <button class="btn btn-primary btn-lg">Зібрати пк</button> 
                     <?php ActiveForm::end() ?>
                     
                 </div>
