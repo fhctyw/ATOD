@@ -5,6 +5,8 @@
 use yii\widgets\ActiveForm;
 use yii\bootstrap4\Html;
 
+$this->registerCssFile('css/login.register.css', ['depends' => \yii\bootstrap4\BootstrapAsset::class]);
+
 ?> 
 
 <div class="register w-25 mx-auto border p-3 rounded ">
