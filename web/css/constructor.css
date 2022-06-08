@@ -1,0 +1,26 @@
+.col h2
+{
+    font-family: sans-serif;
+    font-size: x-large;
+}
+.col h1
+{
+    color: white;
+    text-shadow: 
+		0px  0px 6px #124981;
+}
+.col h1,h2
+{
+    text-align:center;
+}
+.border
+{
+    background-color: #a5c9ef;
+    border-radius: 25px;
+}
+.build-form
+{
+    color: white;
+    text-shadow: 
+		0px  0px 6px #124981;
+}

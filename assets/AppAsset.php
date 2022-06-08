@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         'css/product.css',
         'css/profile.css',
         'css/builds.css',
+        'css/constructor.css',
     ];
     public $js = [
         'js/busket.js',
