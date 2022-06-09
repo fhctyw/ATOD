@@ -20,7 +20,7 @@ class ConstructorController extends Controller
     {
         parent::init();
         $this->menu = new CategoryMenu();
-        $this->menu->initItems([['Материнські плати', 'motherboards'], 'videocards', 'processors', 'memory', 'hdd', 'psu', 'ssd', 'cases'], [], ['style' => 'display:none;']);
+        $this->menu->initItems([['Материнські плати', 'motherboards'], ['Відеокарти','videocards'], ['Процесори','processors'], ['Пам`ять','memory'], ['Накопичувачі HDD','hdd'], ['Блоки живлення','psu'], ['Накопичувачі SSD','ssd'], ['Корпуси','cases']], [], ['style'=>'display:none;']);
     }
 
     public function beforeAction($action) {

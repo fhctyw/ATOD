@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 $this->registerJsFile('js/SLscript.js', ['depends' => \yii\web\JqueryAsset::class]);
+$this->registerCssFile('css/slider.css', ['depends' => \yii\bootstrap4\BootstrapAsset::class]);
 
 ?>
 <style>
