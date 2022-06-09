@@ -11,7 +11,17 @@ class Characteristics extends ActiveRecord
 {
     public static function findIdentity($id)
     {
-        return Characteristics::find()->where(['product_id' => $id])->all();
+        return static::find()->where(['product_id' => $id])->all();
+    }
+
+    public static function findIdentityChar($id, $char)
+    {
+        return static::find()->where(['product_id' => $id, 'name_char'=>$char])->one();
+    }
+
+    public static function findChar($char)
+    {
+        return static::find()->where(['name_char'=>$char])->all();
     }
 }
 ?>

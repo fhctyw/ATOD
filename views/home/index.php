@@ -5,6 +5,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
+$this->registerJsFile('js/SLscript.js', ['depends' => \yii\web\JqueryAsset::class]);
+
 ?>
 <style>
     .item_wrap{
