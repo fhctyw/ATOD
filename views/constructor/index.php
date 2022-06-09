@@ -12,17 +12,17 @@ $this->registerJsFile('js/Constructor.js', [View::POS_BEGIN, 'depends' => \yii\w
 ?>
 
 <div class="row">
-    <div class="col-3 vh-100" style="overflow: auto;">
+    <div class="col-3 vh-100 " style="overflow: auto;">
         <?= Menu::widget([
             'items' => $menu->items,
             'labelTemplate' => '<i class="category">{label}</i>',
-            'options' => ['class' => "border border-dark"]
+            'options' => ['class' => "border"]
         ]) ?>
     </div>
     <div class="col-9">
         <div class="col">
         <h1> Власна збірка </h1>
-            <div class="row-9 vh-100 border text-primary" style="overflow: auto;">
+            <div class="row-9 vh-100 text-primary" id="row-desk" style="overflow: auto;">
             <h2> Дошка </h2>
                 <div class="container" id="desk">
                     <div class="row"></div>
