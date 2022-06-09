@@ -22,8 +22,8 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/header.css',
         'css/site.css',
-        'css/slider.css',
-        'css/login.register.css',
+        /*'css/slider.css',
+        'css/login.register.css',*/
         'css/product.css',
         'css/profile.css',
         'css/builds.css',

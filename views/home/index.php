@@ -5,6 +5,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
+$this->registerCssFile('css/slider.css', ['depends' => \yii\bootstrap4\BootstrapAsset::class]);
+
 ?>
 <style>
     .item_wrap{
