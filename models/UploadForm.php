@@ -22,9 +22,9 @@ class UploadForm extends ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);//ошибка
+            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' .Yii::$app->user->identity->id. '.'.date('His'));//ошибка
             $comm = Yii::$app->db->createCommand('UPDATE users SET url_photo = :url_photo WHERE id = :id');
-            $filename = $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $filename = $this->imageFile->baseName . '.' .Yii::$app->user->identity->id . '.'.date('His');
             $comm->bindParam(':url_photo', $filename);
             $comm->bindParam(':id', Yii::$app->user->identity->id);
             $comm->execute();
