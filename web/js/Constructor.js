@@ -1,4 +1,5 @@
 var arr = [];
+var should_refresh = false;
 
 function deleteFromArr(arr, id) {
     var i = 0;
@@ -14,7 +15,28 @@ function process(arr)
 {
     send_arr = getArrIndexs(arr);
     send_arr = send_arr.toString();
-    $.post("../constructor/process", {arr: send_arr});
+    /* $.post("../constructor/index", {arr: send_arr, should_refresh: should_refresh}); */
+    $.ajax({
+        type: 'post',
+        url: "../constructor/index",
+        data: {arr: send_arr, should_refresh: should_refresh},
+        error: function(e)
+        {
+            console.log("error");
+            console.log(e.responseText);
+        },
+        success: function(r) {
+            console.log("success");
+           /*  var html = e.responseText; */
+            /* console.log(e); */
+            if (r.includes('<!DOCTYPE html>') && should_refresh)
+            {
+                document.open();
+                document.write(r);
+                document.close();
+            }
+        } 
+    });
 }
 
 function remove(e) {
@@ -54,6 +76,8 @@ function addPart(e)
         row.appendChild(d);
     });
 
+    should_refresh = true;
+
     process(arr);
     sessionStorage.setItem('arr', JSON.stringify(arr));
 }
@@ -74,6 +98,9 @@ function load() {
         d.addEventListener("click", remove);
         row.appendChild(d);
     });
+
+    process(arr);
+    should_refresh = false;
 }
 
 function getArrIndexs(arr) {
@@ -99,10 +126,10 @@ function post_build(e) {
     data = $(this).serializeArray();
     data.push({name:'arr', value:arr.toString()});
     //data.forEach(element => {
-        console.log({
+        /* console.log({
             build_name: getValue(data, 'BuildsForm[build_name]'),
             arr: getValue(data, 'arr')
-        });
+        }); */
         
    // });
 

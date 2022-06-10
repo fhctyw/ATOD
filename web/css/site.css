@@ -119,4 +119,24 @@ a:active {
 }
 
 
-
+.item_wrap{
+    justify-content:center;
+    gap:20px;
+    padding:10px;
+}
+.item-main{
+    gap: 20px;
+    padding: 10px;
+    background: #A5C9EF;
+    border-radius: 5px;
+}
+.item_title, .item_content{
+    color: white;
+    border-radius: 5px;
+}
+.item_content{
+    color: black;
+    background: white;
+    margin-top: 8px;
+    display: block;
+}
