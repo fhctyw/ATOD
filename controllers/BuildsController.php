@@ -7,6 +7,7 @@ use app\models\Builds_part;
 use app\models\Products;
 use yii\web\Controller;
 use app\models\Characteristics;
+use app\models\Admins;
 use Yii;
 
 class BuildsController extends Controller {
@@ -20,6 +21,12 @@ class BuildsController extends Controller {
             array_push($characteristics, [Products::findIdentity($part->product_id)->product_name, Characteristics::findIdentity($part->product_id)]); 
         }
     return $this->render('index',compact('build', 'characteristics'));
+    }
+
+    public function activeChangeState($id)
+    {
+        Builds::findIdentity($id)->is_allowed = true;
+        return $this->refresh();
     }
 }
 ?>

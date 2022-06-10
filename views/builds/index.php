@@ -4,6 +4,7 @@ use app\models\Characteristics;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
+use app\models\Admins;
 
 ?>
 
@@ -22,6 +23,9 @@ use yii\widgets\LinkPager;
         <div class="builds_buttons">
             <button class="btn btn-success btn-lg m-4" target="_blank" rel="noopener noreferrer" href=<?= $products->url_site ?>>Купити</button>
             <button class="btn btn-primary btn-lg add-to-busket m-4" type="button" href=<?= Url::to(['busket/add', 'id' => $products->product_id]) ?> data-id=<?= $products->product_id ?>>Добавити в кошик</button>
+                <?php if(Admins::isAdmin(Yii::$app->user->identity->id)):?>
+                    <a class="btn btn-agreement" target="_blank" rel="noopener noreferrer">Одобрити збірку</a>
+                <?php endif;?>
         </div>
     </div>
     <div class="col-7">
