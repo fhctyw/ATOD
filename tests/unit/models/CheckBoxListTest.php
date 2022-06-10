@@ -25,7 +25,8 @@ class CheckBoxListTest extends \Codeception\Test\Unit
 
     public function testCheck()
     {
-        $model = CheckboxList::check();
+        $model = new CheckboxList();
+        $model->categories = ['motherboards', 'videocards']; 
         $this->assertNotEmpty($model);
     }
 }
