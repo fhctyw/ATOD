@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Builds;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
@@ -68,7 +69,7 @@ class HomeController extends Controller
      */
     public function actionIndex()
     {
-        $best_builds = Products::find()->orderBy('price DESC')->limit(10)->all();
+        $best_builds = Builds::findAllAllowed(10);
         $query = Products::find()->offset(10);
         $pages = new Pagination(['totalCount'=>$query->count(), 'pageSize'=>20]);
         $products = Products::find()->offset($pages->offset)->limit($pages->limit)->all();

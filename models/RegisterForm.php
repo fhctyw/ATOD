@@ -29,6 +29,7 @@ class RegisterForm extends Model
             $user->name = $this->name;
             $user->email = $this->email;
             $user->password = $this->password;
+            $user->url_photo = 'profile.png';
             $user->save();
             return Yii::$app->user->login($user, 3600*24*30);
         }

@@ -6,7 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use app\models\BuildPart;
 
-class Builds extends ActiveRecord 
+class Builds extends ActiveRecord
 {
     public $parts;
 
@@ -18,16 +18,26 @@ class Builds extends ActiveRecord
     public static function findIdentity($id)
     {
         $build = static::findOne($id);
-        $build->parts = BuildPart::find()->where(['build_id'=>$id])->all();
+        $build->parts = BuildPart::find()->where(['build_id' => $id])->all();
         return $build;
     }
-    
+
     public static function findAllIdentity($id)
     {
         $builds = static::find()->where(['user_id' => $id])->all();
-        foreach($builds as $build)
-        {
-            $build->parts = BuildPart::find()->where(['build_id'=>$build->build_id])->all();
+        foreach ($builds as $build) {
+            $build->parts = BuildPart::find()->where(['build_id' => $build->build_id])->all();
+        }
+        return $builds;
+    }
+
+    public static function findAllAllowed($count)
+    {
+        $builds = static::find()->where(['is_allowed' => 1])->limit($count)->all();
+        if (count($builds) < $count)
+            $builds = array_merge($builds, static::find()->where(['is_allowed' => 0])->limit($count - count($builds))->all());
+        foreach ($builds as $build) {
+            $build->parts = BuildPart::find()->where(['build_id' => $build->build_id])->all();
         }
         return $builds;
     }
