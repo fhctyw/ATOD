@@ -42,6 +42,11 @@ class Builds extends ActiveRecord
         return $builds;
     }
 
+    public static function isAllowed($id)
+    {
+        return Builds::findIdentity($id)->is_allowed;
+    }
+
     public function price()
     {
         $sum = 0.0;

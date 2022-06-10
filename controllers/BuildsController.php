@@ -11,21 +11,26 @@ use app\models\Admins;
 use Yii;
 
 class BuildsController extends Controller {
-    public function actionIndex() 
+    public function actionIndex($id) 
     {
-        $id = Yii::$app->request->get('id');
         $build = Builds::findIdentity($id);
         $characteristics = [];
         foreach($build->parts as $part)
         {
             array_push($characteristics, [Products::findIdentity($part->product_id)->product_name, Characteristics::findIdentity($part->product_id)]); 
         }
-    return $this->render('index',compact('build', 'characteristics'));
+        if (isset(Yii::$app->request->post()['state']))
+        {
+            $b = Builds::findIdentity($id);
+            $b->is_allowed = (bool)Yii::$app->request->post('state');    
+            $b->save();
+        }
+        return $this->render('index',compact('build', 'characteristics', 'shouldChangeState'));
     }
 
     public function activeChangeState($id)
     {
-        Builds::findIdentity($id)->is_allowed = true;
+
         return $this->refresh();
     }
 }
