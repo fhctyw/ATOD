@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Профіль</title>
    <link rel="stylesheet">
+   <?php use yii\widgets\ActiveForm; ?>
 </head>
 
 <body>
@@ -13,10 +13,21 @@
             <section class="computers">
                 <div class="profile">
                     <div>
-                        <?=  \yii\helpers\Html::img("@web/uploads/profile/{$user['url_photo']}",['alt'=> "@web/uploads/{$user['name']}",'height'=>150])?>
+                    <?=  \yii\helpers\Html::img("@web/uploads/{$user['url_photo']}",['alt'=> "@web/uploads/{$user['name']}",'height'=>150])?>
+                    <br>Змінити зображення:</br>
+                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data','class'=>'custom-file']]) ?>
+                    
+
+                    <?= $form->field($model, 'imageFile',['options' => ['class' => 'custom-file-label']])->fileInput() ?>
+                    
+<br>
+<br>
+                     <button>Submit</button>              
+                    <?php ActiveForm::end() ?>
                     </div>
                     <div class="profile_info">
-                       <p>Ім'я користувача: <? echo $user->name ?></p>
+                       <p>Ім'я користувача: <? echo $user->name ?> </p>
+                       <? echo date('Y-m-d H:i:s'); ?>
                        <p class="count">Кількість зібраних збірок: <?= ' '.$builds_count ?></p>
                     </div>
                 </div>
