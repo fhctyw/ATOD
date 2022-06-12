@@ -16,7 +16,7 @@ $this->registerJsFile('js/Constructor.js', [View::POS_BEGIN, 'depends' => \yii\w
         <?= Menu::widget([
             'items' => $menu->items,
             'labelTemplate' => '<i class="category">{label}</i>',
-            'options' => ['class' => "border"]
+            'options' => ['class' => "borderr"]
         ]) ?>
     </div>
     <div class="col-9">

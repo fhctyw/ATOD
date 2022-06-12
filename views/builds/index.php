@@ -5,6 +5,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 use app\models\Admins;
+use app\models\Builds;
+use yii\bootstrap4\ActiveForm;
 
 ?>
 
@@ -23,8 +25,10 @@ use app\models\Admins;
         <div class="builds_buttons">
             <button class="btn btn-success btn-lg m-4" target="_blank" rel="noopener noreferrer" href=<?= $products->url_site ?>>Купити</button>
             <button class="btn btn-primary btn-lg add-to-busket m-4" type="button" href=<?= Url::to(['busket/add', 'id' => $products->product_id]) ?> data-id=<?= $products->product_id ?>>Добавити в кошик</button>
-                <?php if(Admins::isAdmin(Yii::$app->user->identity->id)):?>
-                    <a class="btn btn-agreement" target="_blank" rel="noopener noreferrer">Одобрити збірку</a>
+                <?php if(Admins::isAdmin(Yii::$app->user->identity->id)): ?>
+                    <?php $form = ActiveForm::begin();?>    
+                    <form><button class="btn btn-info" data-toggle="button"><input type="hidden" name="state" value=<?= Builds::isAllowed($build->build_id) ? "0" : "1"?>></input><?= Builds::isAllowed($build->build_id) ? "Не одобрити" : "Одобрити"?></button></form>
+                    <?php ActiveForm::end(); ?>
                 <?php endif;?>
         </div>
     </div>
