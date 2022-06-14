@@ -12,7 +12,7 @@ class BuildsForm extends Model
     public function rules()
     {
         return [
-            ['build_name', 'required']
+            ['build_name', 'required', 'message'=>'Введіть назву збірки']
         ];
     }
 
